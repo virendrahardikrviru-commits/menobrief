@@ -1,0 +1,59 @@
+
+:root {
+    /* Brand */
+    --brand-primary: #08795B;
+    --brand-primary-dark: #06664D;
+    --brand-primary-light: #E5F5EC;
+
+    --brand-pink: #E98A9B;
+    --brand-rose: #FCECF1;
+    --brand-purple: #8066C9;
+    --brand-blue: #3979D8;
+    --brand-yellow: #D69B00;
+
+    /* Backgrounds */
+    --bg-main: #F8F9FA;
+    --bg-white: #FFFFFF;
+    --bg-cream: #FFFCFA;
+    --bg-sidebar: #FBFAFA;
+
+    /* Text */
+    --text-primary: #111827;
+    --text-secondary: #475569;
+    --text-muted: #84909E;
+
+    /* Borders */
+    --border-light: #E7E9EC;
+    --border-medium: #D8DDE3;
+
+    /* Category colours */
+    --pink-bg: #FFF0F4;
+    --purple-bg: #F4F0FF;
+    --blue-bg: #EEF4FF;
+    --yellow-bg: #FFF8E7;
+    --green-bg: #ECF8F0;
+    --rose-bg: #FFF0F4;
+
+    /* Layout */
+    --header-height: 76px;
+    --sidebar-width: 255px;
+    --right-panel-width: 320px;
+
+    /* Shape */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 22px;
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --shadow-card: 0 4px 18px rgba(15, 23, 42, 0.045);
+
+    /* Typography */
+    --font-body: "DM Sans", sans-serif;
+    --font-heading: "DM Sans", sans-serif;
+    --font-editorial: "Playfair Display", Georgia, serif;
+
+    /* Transitions */
+    --transition: 180ms ease;
+}

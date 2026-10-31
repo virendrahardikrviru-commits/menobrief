@@ -1,0 +1,38 @@
+# Backup files (all development phases)
+*.bak
+*.before-*.bak
+*backup*
+index-backup.html.html
+index.html.backup-*
+
+# Generated PDFs (created locally by users, never committed)
+*.pdf
+
+# Private test data, sample clinical records, secrets
+*.env
+*.env.local
+*.env.*.local
+secrets*
+credentials*
+private*
+*.key
+*.pem
+
+# Local environment and build output
+node_modules/
+dist/
+build/
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.orig

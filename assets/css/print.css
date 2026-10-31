@@ -1,0 +1,139 @@
+﻿
+@media print {
+
+    @page {
+        size: A4;
+        margin: 18mm;
+    }
+
+    body {
+        background: white !important;
+        color: #111827;
+        font-size: 11pt;
+    }
+
+    .topbar,
+    .sidebar,
+    .right-panel,
+    .footer,
+    .hero-section,
+    .form-actions,
+    .step-progress,
+    .ai-option,
+    .ai-privacy-note {
+        display: none !important;
+    }
+
+    .dashboard-layout {
+        display: block;
+        min-height: auto;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .workspace {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .symptom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .symptom-card {
+        break-inside: avoid;
+    }
+
+    .narrative-section textarea {
+        border: none;
+        resize: none;
+    }
+
+    h1, h2, h3 {
+        break-after: avoid;
+    }
+
+    /* STEP 4: PRINT ONLY THE CLINICAL BRIEFING */
+
+    #step-one-panel,
+    #step-two-panel,
+    #step-three-panel {
+        display: none !important;
+    }
+
+    #step-four-panel {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    #step-four-panel .review-section {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #D1D5DB;
+        margin-bottom: 12px;
+    }
+
+    #step-four-panel .briefing-disclaimer {
+        border: 1px solid #D1D5DB;
+        padding: 12px;
+        margin-top: 15px;
+        break-inside: avoid;
+    }
+
+    #step-four-panel .review-row {
+        break-inside: avoid;
+    }
+
+    #step-four-panel h2,
+    #step-four-panel h3 {
+        color: #111827 !important;
+    }
+
+    #step-four-panel .briefing-header {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #step-four-panel .briefing-subtitle {
+        color: #4B5563;
+    }
+}
+
+
+/* STEP 4: PRINT ONLY THE CLINICAL BRIEFING */
+@media print {
+    #step-one-panel,
+    #step-two-panel,
+    #step-three-panel {
+        display: none !important;
+    }
+
+    #step-four-panel {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    #step-four-panel .review-section {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #D1D5DB;
+        margin-bottom: 12px;
+    }
+
+    #step-four-panel .briefing-disclaimer {
+        border: 1px solid #D1D5DB;
+        padding: 12px;
+        margin-top: 15px;
+        break-inside: avoid;
+    }
+
+    #step-four-panel .review-row {
+        break-inside: avoid;
+    }
+}

@@ -1,0 +1,889 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="MenoBrief is a free, open-source tool that helps women prepare structured menopause clinical briefings.">
+
+    <title>MenoBrief â€” Menopause Clinical Briefing Tool</title>
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="assets/css/print.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <a href="#" class="brand">
+                <span class="brand-icon">
+    <img src="assets/images/lotus.svg" alt="MenoBrief lotus logo">
+</span>
+
+                <span class="brand-text">
+                    <strong>MenoBrief</strong>
+                    <small>Menopause Clinical Briefing Tool</small>
+                </span>
+            </a>
+
+            <span class="opensource-badge">
+                <i data-lucide="github"></i>
+                Open Source
+            </span>
+
+            <nav class="top-navigation">
+                <a href="#home" class="active">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#straw">About STRAW+10</a>
+                <a href="#roadmap">Roadmap</a>
+            </nav>
+
+            <a href="https://github.com/" target="_blank"
+               rel="noopener noreferrer" class="github-button">
+                <i data-lucide="github"></i>
+                GitHub
+            </a>
+
+        </header>
+
+
+        <!-- MAIN LAYOUT -->
+        <div class="dashboard-layout">
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="sidebar">
+
+                <nav class="sidebar-navigation">
+
+                    <a href="#create" class="sidebar-link active">
+                        <i data-lucide="house"></i>
+                        <span>Create Briefing</span>
+                    </a>
+
+                    <a href="#how-it-works" class="sidebar-link">
+                        <i data-lucide="circle-help"></i>
+                        <span>How It Works</span>
+                    </a>
+
+                    <a href="#straw" class="sidebar-link">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>About STRAW+10</span>
+                    </a>
+
+                    <a href="#privacy" class="sidebar-link">
+                        <i data-lucide="shield-check"></i>
+                        <span>Privacy &amp; Safety</span>
+                    </a>
+
+                    <a href="#faq" class="sidebar-link">
+                        <i data-lucide="help-circle"></i>
+                        <span>FAQ</span>
+                    </a>
+
+                    <a href="#contribute" class="sidebar-link">
+                        <i data-lucide="github"></i>
+                        <span>Contribute on GitHub</span>
+                    </a>
+
+                </nav>
+
+                <div class="sidebar-feature">
+
+                    <i data-lucide="sparkles"></i>
+
+                    <h3>The Clinical<br>Translation Engine</h3>
+
+                    <p>
+                        Turns your real-life experience into
+                        an objective, doctor-friendly briefing.
+                    </p>
+
+                </div>
+
+            </aside>
+
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content" id="home">
+
+                <!-- HERO -->
+                <section class="hero-section">
+
+                    <div class="hero-content">
+
+                        <span class="eyebrow">
+                            YOUR EXPERIENCE MATTERS
+                        </span>
+
+                        <h1>
+                            Don't let a 15-minute appointment
+                            dismiss 15 years of symptoms.
+                        </h1>
+
+                        <p class="hero-description">
+                            Turn your menopause experience into
+                            a clear, structured clinical briefing
+                            you can take to your doctor.
+                        </p>
+
+                        <div class="trust-indicators">
+
+                            <div class="trust-item">
+                                <span class="trust-icon">
+                                    <i data-lucide="lock"></i>
+                                </span>
+                                <span>
+                                <strong>Temporary browser memory</strong>
+                                <small>Data is held only while you work; refreshing or closing clears it.</small>
+                                </span>
+                            </div>
+
+                            <div class="trust-item">
+                                <span class="trust-icon">
+                                    <i data-lucide="zap"></i>
+                                </span>
+                                <span>
+                                    <strong>No Account</strong>
+                                    <small>Use instantly, no sign-up</small>
+                                </span>
+                            </div>
+
+                            <div class="trust-item">
+                                <span class="trust-icon">
+                                    <i data-lucide="code-2"></i>
+                                </span>
+                                <span>
+                                    <strong>Open Source</strong>
+                                    <small>Free, forever, on GitHub</small>
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-image" aria-label="A woman reflecting peacefully">
+                        <!-- Hero photograph is supplied by assets/images/hero-woman.jpg via CSS -->
+                    </div>
+
+                </section>
+
+
+                <!-- WORKSPACE -->
+                <section class="workspace" id="create">
+
+                    <div class="step-progress">
+
+                        <div class="step active">
+                            <span class="step-number">1</span>
+                            <span>Symptoms</span>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <span>Details</span>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <span>Review</span>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <span>Your Briefing</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- STEP 1 -->
+                     <div id="step-one-panel">
+                    <div class="form-heading">
+
+                        <h2>Step 1: What have you been experiencing?</h2>
+
+                        <p>
+                            Select all symptoms that apply.
+                            You can choose as many as you need.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SYMPTOM GRID -->
+                    <div class="symptom-grid">
+
+                        <!-- VASOMOTOR -->
+                        <article class="symptom-card pink">
+
+                            <div class="symptom-card-header">
+                                <i data-lucide="flame"></i>
+                                <div>
+                                    <h3>Vasomotor</h3>
+                                    <p>Temperature regulation changes</p>
+                                </div>
+                            </div>
+
+                            <div class="symptom-options">
+                                <label><input type="checkbox" name="symptoms" value="Hot flashes"> Hot flashes</label>
+                                <label><input type="checkbox" name="symptoms" value="Night sweats"> Night sweats</label>
+                                <label><input type="checkbox" name="symptoms" value="Feeling overheated"> Feeling overheated</label>
+                            </div>
+
+                        </article>
+
+
+                        <!-- COGNITIVE -->
+                        <article class="symptom-card purple">
+
+                            <div class="symptom-card-header">
+                                <i data-lucide="brain"></i>
+                                <div>
+                                    <h3>Cognitive</h3>
+                                    <p>Thinking, memory and focus</p>
+                                </div>
+                            </div>
+
+                            <div class="symptom-options">
+                                <label><input type="checkbox" name="symptoms" value="Brain fog"> Brain fog</label>
+                                <label><input type="checkbox" name="symptoms" value="Memory issues"> Memory issues</label>
+                                <label><input type="checkbox" name="symptoms" value="Difficulty concentrating"> Difficulty concentrating</label>
+                            </div>
+
+                        </article>
+
+
+                        <!-- SLEEP -->
+                        <article class="symptom-card blue">
+
+                            <div class="symptom-card-header">
+                                <i data-lucide="moon"></i>
+                                <div>
+                                    <h3>Sleep</h3>
+                                    <p>Sleep quality and patterns</p>
+                                </div>
+                            </div>
+
+                            <div class="symptom-options">
+                                <label><input type="checkbox" name="symptoms" value="Insomnia"> Insomnia / trouble falling asleep</label>
+                                <label><input type="checkbox" name="symptoms" value="Early waking"> Waking at 3 AM or early</label>
+                                <label><input type="checkbox" name="symptoms" value="Poor sleep quality"> Poor sleep quality</label>
+                            </div>
+
+                        </article>
+
+
+                        <!-- MOOD -->
+                        <article class="symptom-card yellow">
+
+                            <div class="symptom-card-header">
+                                <i data-lucide="smile"></i>
+                                <div>
+                                    <h3>Mood &amp; Emotional</h3>
+                                    <p>Emotional wellbeing and mood</p>
+                                </div>
+                            </div>
+
+                            <div class="symptom-options">
+                                <label><input type="checkbox" name="symptoms" value="Anxiety"> Anxiety or feeling on edge</label>
+                                <label><input type="checkbox" name="symptoms" value="Mood swings"> Sudden mood swings</label>
+                                <label><input type="checkbox" name="symptoms" value="Irritability"> Irritability / rage</label>
+                                <label><input type="checkbox" name="symptoms" value="Crying spells"> Crying spells</label>
+                            </div>
+
+                        </article>
+
+
+                        <!-- PHYSICAL -->
+                        <article class="symptom-card green">
+
+                            <div class="symptom-card-header">
+                                <i data-lucide="activity"></i>
+                                <div>
+                                    <h3>Physical</h3>
+                                    <p>Body changes and discomfort</p>
+                                </div>
+                            </div>
+
+                            <div class="symptom-options">
+                                <label><input type="checkbox" name="symptoms" value="Joint or muscle pain"> Joint or muscle pain</label>
+                                <label><input type="checkbox" name="symptoms" value="Heart palpitations"> Heart palpitations</label>
+                                <label><input type="checkbox" name="symptoms" value="Headaches"> Headaches / migraines</label>
+                                <label><input type="checkbox" name="symptoms" value="Bloating or weight changes"> Bloating or weight changes</label>
+                            </div>
+
+                        </article>
+
+
+                        <!-- MENSTRUAL -->
+                        <article class="symptom-card rose">
+
+                            <div class="symptom-card-header">
+                                <i data-lucide="droplet"></i>
+                                <div>
+                                    <h3>Menstrual &amp; Other</h3>
+                                    <p>Cycle and related changes</p>
+                                </div>
+                            </div>
+
+                            <div class="symptom-options">
+                                <label><input type="checkbox" name="symptoms" value="Irregular periods"> Irregular periods</label>
+                                <label><input type="checkbox" name="symptoms" value="Heavier or lighter bleeding"> Heavier or lighter bleeding</label>
+                                <label><input type="checkbox" name="symptoms" value="Longer or shorter cycles"> Longer or shorter cycles</label>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- NARRATIVE -->
+                    <div class="narrative-section">
+
+                        <label for="patient-story">
+                            <i data-lucide="edit-3"></i>
+                            In your own words, tell us more about your experience.
+                        </label>
+
+                        <textarea
+                            id="patient-story"
+                            maxlength="2000"
+                            placeholder="For example: When did your symptoms start? How often do they happen? How severe are they? How have they affected your work, daily life, or relationships?"
+                        ></textarea>
+
+                        <div class="character-count">
+                            <span id="story-count">0</span> / 2,000
+                        </div>
+
+                    </div>
+
+
+                    <p class="ai-privacy-note">
+                        Your briefing is generated locally on your device from the
+                        information you enter. No data is sent to any AI service or
+                        external server.
+                    </p>
+
+
+                    <!-- ACTION -->
+                    <div class="form-actions">
+
+                        <span class="selection-count">
+                            <strong id="selected-count">0</strong> symptoms selected
+                        </span>
+
+                        <button class="primary-button" id="continue-button" type="button">
+                            Continue
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+
+                    </div>
+                    </div>
+                    <!-- END STEP 1 -->
+
+
+                    <!-- STEP 2: PERSONAL & MENSTRUAL HISTORY -->
+                    <div id="step-two-panel" hidden>
+
+                        <div class="form-heading">
+                            <span class="section-eyebrow">YOUR PERSONAL CONTEXT</span>
+                            <h2>Step 2: Tell us a little more about yourself.</h2>
+                            <p>
+                                These optional details help provide context for your
+                                clinical briefing. Only share what you're comfortable sharing.
+                            </p>
+                        </div>
+
+                        <!-- ABOUT YOU -->
+                        <div class="details-section">
+                            <div class="details-section-heading">
+                                <i data-lucide="user-round"></i>
+                                <div>
+                                    <h3>About You</h3>
+                                    <p>A little background information</p>
+                                </div>
+                            </div>
+                            <div class="details-grid">
+                                <div class="detail-field">
+                                    <label for="age-range">Your age range</label>
+                                    <select id="age-range" name="ageRange">
+                                        <option value="">Prefer not to say</option>
+                                        <option value="Under 40">Under 40</option>
+                                        <option value="40-44">40-44 years</option>
+                                        <option value="45-49">45-49 years</option>
+                                        <option value="50-54">50-54 years</option>
+                                        <option value="55-59">55-59 years</option>
+                                        <option value="60 or above">60 years or above</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MENSTRUAL HISTORY -->
+                        <div class="details-section">
+                            <div class="details-section-heading">
+                                <i data-lucide="calendar-heart"></i>
+                                <div>
+                                    <h3>Menstrual History</h3>
+                                    <p>Understanding your menstrual cycle patterns</p>
+                                </div>
+                            </div>
+                            <div class="details-grid">
+                                <div class="detail-field full-width">
+                                    <label for="menstrual-status">
+                                        Which best describes your menstrual cycles?
+                                    </label>
+                                    <select id="menstrual-status" name="menstrualStatus">
+                                        <option value="">Select an option</option>
+                                        <option value="Regular periods">Regular periods</option>
+                                        <option value="Irregular periods">Irregular periods</option>
+                                        <option value="No periods for 12 months or more">
+                                            No periods for 12 months or more
+                                        </option>
+                                        <option value="Periods stopped due to surgery or medical treatment">
+                                            Periods stopped due to surgery or medical treatment
+                                        </option>
+                                        <option value="Not sure">Not sure</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                                <div class="detail-field">
+                                    <label for="last-period">First day of your last menstrual period</label>
+                                    <input type="date" id="last-period" name="lastPeriod">
+                                    <small>Optional. Leave blank if unknown.</small>
+                                </div>
+                                <div class="detail-field">
+                                    <label for="cycle-length">Typical cycle length (days)</label>
+                                    <input
+                                        type="number"
+                                        id="cycle-length"
+                                        name="cycleLength"
+                                        min="1"
+                                        max="120"
+                                        placeholder="e.g. 28"
+                                    >
+                                    <small>Approximate number of days between periods.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MEDICATION AND TREATMENT -->
+                        <div class="details-section">
+                            <div class="details-section-heading">
+                                <i data-lucide="pill"></i>
+                                <div>
+                                    <h3>Medication &amp; Treatment</h3>
+                                    <p>Optional information about current treatment</p>
+                                </div>
+                            </div>
+                            <div class="details-grid">
+                                <div class="detail-field full-width">
+                                    <label for="hormonal-treatment">
+                                        Are you currently using hormonal medication or contraception?
+                                    </label>
+                                    <select id="hormonal-treatment" name="hormonalTreatment">
+                                        <option value="">Prefer not to say</option>
+                                        <option value="No">No</option>
+                                        <option value="HRT">Hormone replacement therapy (HRT)</option>
+                                        <option value="Hormonal contraception">Hormonal contraception</option>
+                                        <option value="Other hormonal medication">Other hormonal medication</option>
+                                        <option value="Not sure">Not sure</option>
+                                    </select>
+                                </div>
+                                <div class="detail-field full-width">
+                                    <label for="medication-details">Medication or treatment details</label>
+                                    <textarea
+                                        id="medication-details"
+                                        name="medicationDetails"
+                                        rows="3"
+                                        maxlength="1000"
+                                        placeholder="Optional: medication names, duration of use, or previous treatments..."
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RELEVANT MEDICAL HISTORY -->
+                        <div class="details-section">
+                            <div class="details-section-heading">
+                                <i data-lucide="clipboard-list"></i>
+                                <div>
+                                    <h3>Relevant Medical History</h3>
+                                    <p>Anything you would like your clinician to know</p>
+                                </div>
+                            </div>
+                            <div class="detail-field full-width">
+                                <label for="medical-history">
+                                    Previous diagnoses, surgeries or relevant medical history
+                                </label>
+                                <textarea
+                                    id="medical-history"
+                                    name="medicalHistory"
+                                    rows="3"
+                                    maxlength="1500"
+                                    placeholder="Optional: include any relevant medical history you wish to discuss with your doctor..."
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- DAILY LIFE IMPACT -->
+                        <div class="details-section">
+                            <div class="details-section-heading">
+                                <i data-lucide="heart-handshake"></i>
+                                <div>
+                                    <h3>Impact on Daily Life</h3>
+                                    <p>How have these experiences affected you?</p>
+                                </div>
+                            </div>
+                            <div class="impact-options">
+                                <label><input type="checkbox" name="impact" value="Work or career"> Work or career</label>
+                                <label><input type="checkbox" name="impact" value="Sleep and rest"> Sleep and rest</label>
+                                <label><input type="checkbox" name="impact" value="Relationships"> Relationships</label>
+                                <label><input type="checkbox" name="impact" value="Daily activities"> Daily activities</label>
+                                <label><input type="checkbox" name="impact" value="Emotional wellbeing"> Emotional wellbeing</label>
+                                <label><input type="checkbox" name="impact" value="Physical activity"> Physical activity</label>
+                            </div>
+                        </div>
+
+                        <div class="details-privacy-note">
+                            <i data-lucide="shield-check"></i>
+                                <span>
+                                    All information is optional and is held temporarily
+                                    in your browser's memory while you work on this page.
+                                    Refreshing or closing the page will clear the entered
+                                    information. Your PDF download is created locally on
+                                    your device and is not sent to any server.
+                                </span>
+                        </div>
+
+                        <div id="step-two-feedback" role="status" aria-live="polite"></div>
+
+                        <div class="form-actions">
+                            <button class="secondary-button" id="back-button" type="button">
+                                <i data-lucide="arrow-left"></i>
+                                Back
+                            </button>
+                            <button class="primary-button" id="continue-step-two" type="button">
+                                Continue to Review
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- END STEP 2 -->
+                    <!-- STEP 3: REVIEW YOUR INFORMATION -->
+                    <div id="step-three-panel" hidden>
+
+                        <div class="form-heading">
+                            <span class="section-eyebrow">FINAL INFORMATION CHECK</span>
+                            <h2>Step 3: Review Your Information</h2>
+                            <p>
+                                Please check the information below before proceeding
+                                to your clinical briefing.
+                            </p>
+                        </div>
+
+                        <!-- SYMPTOMS REVIEW -->
+                        <div class="review-section">
+                            <div class="review-section-heading">
+                                <h3>Symptoms &amp; Experience</h3>
+                                <button type="button" class="review-edit-button" id="edit-step-one">
+                                    Edit Step 1
+                                </button>
+                            </div>
+                            <div id="review-symptoms"></div>
+                            <div id="review-narrative"></div>
+                            <div id="review-ai"></div>
+                        </div>
+
+                        <!-- PERSONAL CONTEXT REVIEW -->
+                        <div class="review-section">
+                            <div class="review-section-heading">
+                                <h3>Personal &amp; Menstrual History</h3>
+                                <button type="button" class="review-edit-button" id="edit-step-two">
+                                    Edit Step 2
+                                </button>
+                            </div>
+                            <div id="review-personal"></div>
+                            <div id="review-menstrual"></div>
+                        </div>
+
+                        <!-- MEDICATION REVIEW -->
+                        <div class="review-section">
+                            <h3>Medication &amp; Treatment</h3>
+                            <div id="review-medication"></div>
+                        </div>
+
+                        <!-- MEDICAL HISTORY REVIEW -->
+                        <div class="review-section">
+                            <h3>Relevant Medical History</h3>
+                            <div id="review-medical"></div>
+                        </div>
+
+                        <!-- DAILY LIFE REVIEW -->
+                        <div class="review-section">
+                            <h3>Impact on Daily Life</h3>
+                            <div id="review-impact"></div>
+                        </div>
+
+                        <div class="details-privacy-note">
+                            <i data-lucide="shield-check"></i>
+                            <span>
+                                Your information remains in your current application
+                                session. Please verify that it is accurate before continuing.
+                            </span>
+                        </div>
+
+                        <div id="review-feedback" role="status" aria-live="polite"></div>
+
+                        <div class="form-actions">
+                            <button class="secondary-button" id="review-back-button" type="button">
+                                <i data-lucide="arrow-left"></i>
+                                Back
+                            </button>
+
+                            <button class="primary-button" id="confirm-review-button" type="button">
+                                Confirm Information
+                                <i data-lucide="check"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- END STEP 3 -->
+
+                    <!-- STEP 4: YOUR CLINICAL BRIEFING -->
+                    <div id="step-four-panel" hidden>
+
+                        <div class="section-intro">
+                            <span class="eyebrow">YOUR CLINICAL BRIEFING</span>
+                            <h2>Step 4: Your Clinical Briefing</h2>
+                            <p>
+                                Your information has been organised into a structured
+                                summary to help you prepare for your healthcare appointment.
+                            </p>
+                        </div>
+
+                        <div class="review-section briefing-header">
+                            <h3>MenoBrief – Clinical Appointment Summary</h3>
+                            <p class="briefing-subtitle">
+                                Patient-prepared information for discussion with a
+                                qualified healthcare professional.
+                            </p>
+                            <p>
+                                <strong>Generated:</strong>
+                                <span id="briefing-date"></span>
+                            </p>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>1. Clinical Summary</h3>
+                            <div id="briefing-summary"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>2. Reported Symptoms</h3>
+                            <div id="briefing-symptoms"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>3. Personal & Menstrual History</h3>
+                            <div id="briefing-personal"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>4. Medication & Treatment</h3>
+                            <div id="briefing-medication"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>5. Relevant Medical History</h3>
+                            <div id="briefing-medical"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>6. Impact on Daily Life</h3>
+                            <div id="briefing-impact"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>7. Points to Discuss With Your Doctor</h3>
+                            <ul id="briefing-discussion-points"></ul>
+                        </div>
+
+                        <div class="briefing-disclaimer">
+                            <strong>Important:</strong>
+                            This briefing organises information provided by the user.
+                            It is not a diagnosis, clinical assessment or treatment
+                            recommendation. All symptoms and treatment decisions should
+                            be discussed with a qualified healthcare professional.
+                        </div>
+
+                        <div id="briefing-feedback" role="status" aria-live="polite"></div>
+
+                        <div class="form-actions briefing-actions">
+                            <button class="secondary-button" id="briefing-back-button" type="button">
+                                <i data-lucide="arrow-left"></i>
+                                Back to Review
+                            </button>
+
+                            <button class="secondary-button" id="briefing-home-button" type="button">
+    <i data-lucide="home"></i>
+    Back to Home
+</button>
+<button class="secondary-button" id="print-briefing-button" type="button">
+                                <i data-lucide="printer"></i>
+                                Download PDF
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- END STEP 4 -->
+
+
+                </section>
+
+            </main>
+
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="right-panel">
+
+                <!-- HOW IT WORKS -->
+                <article class="info-card lavender" id="how-it-works">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="play-circle"></i>
+                        <h3>How It Works</h3>
+                    </div>
+
+                    <div class="how-step">
+                        <span>1</span>
+                        <div>
+                            <strong>Describe your symptoms</strong>
+                            <p>Select what you're experiencing and tell your story.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-step">
+                        <span>2</span>
+                        <div>
+                            <strong>AI organises your information</strong>
+                            <p>Your input is structured using relevant clinical context.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-step">
+                        <span>3</span>
+                        <div>
+                            <strong>Get your clinical briefing</strong>
+                            <p>Download a clear, doctor-friendly PDF.</p>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <!-- STRAW -->
+                <article class="info-card green-card" id="straw">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="book-open"></i>
+                        <h3>About STRAW+10</h3>
+                    </div>
+
+                    <p>
+                        An international framework for describing
+                        reproductive ageing, including perimenopause
+                        and menopause.
+                    </p>
+
+                    <a href="#straw">Learn more â†’</a>
+
+                </article>
+
+
+                <!-- DISCLAIMER -->
+                <article class="info-card disclaimer" id="privacy">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Important Disclaimer</h3>
+                    </div>
+
+                    <p>
+                        MenoBrief is an appointment preparation tool,
+                        not a diagnostic or treatment tool.
+                        Always consult a qualified healthcare
+                        professional for medical advice.
+                    </p>
+
+                </article>
+
+            </aside>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <p>
+                MenoBrief is an open-source initiative dedicated
+                to improving communication in women's health.
+            </p>
+
+            <strong>100% Free Forever.</strong>
+
+        </footer>
+
+    </div>
+
+
+    <!-- Application scripts -->
+    <script src="assets/js/state.js"></script>
+    <script src="assets/js/symptoms.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+

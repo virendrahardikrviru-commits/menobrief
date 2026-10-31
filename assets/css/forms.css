@@ -1,0 +1,670 @@
+
+/* =========================
+   SYMPTOM GRID
+========================= */
+
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.symptom-card {
+    border: 1px solid #E7EAF0;
+    border-radius: 15px;
+    overflow: hidden;
+    min-width: 0;
+    background: #FFFFFF;
+    transition: var(--transition);
+}
+
+.symptom-card:hover {
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   CATEGORY COLOURS
+========================= */
+
+.symptom-card.pink {
+    background: linear-gradient(150deg, #FFFFFF, #FFF9FA);
+    border-color: #F2E4E9;
+}
+
+.symptom-card.purple {
+    background: linear-gradient(150deg, #FFFFFF, #FAF8FF);
+    border-color: #EAE5F5;
+}
+
+.symptom-card.blue {
+    background: linear-gradient(150deg, #FFFFFF, #F8FAFF);
+    border-color: #E2E9F5;
+}
+
+.symptom-card.yellow {
+    background: linear-gradient(150deg, #FFFFFF, #FFFCF5);
+    border-color: #F0EBD9;
+}
+
+.symptom-card.green {
+    background: linear-gradient(150deg, #FFFFFF, #F8FCF9);
+    border-color: #E0EBE4;
+}
+
+.symptom-card.rose {
+    background: linear-gradient(150deg, #FFFFFF, #FFFAFC);
+    border-color: #F1E0E7;
+}
+
+
+/* =========================
+   CARD HEADERS
+========================= */
+
+.symptom-card-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 13px;
+    min-height: 49px;
+}
+
+.symptom-card.pink .symptom-card-header {
+    background: #FFF0F4;
+}
+
+.symptom-card.purple .symptom-card-header {
+    background: #F3EEFF;
+}
+
+.symptom-card.blue .symptom-card-header {
+    background: #EDF3FF;
+}
+
+.symptom-card.yellow .symptom-card-header {
+    background: #FFF7E3;
+}
+
+.symptom-card.green .symptom-card-header {
+    background: #EAF7EE;
+}
+
+.symptom-card.rose .symptom-card-header {
+    background: #FDEEF3;
+}
+
+.symptom-card-header > svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.symptom-card.pink .symptom-card-header > svg {
+    color: #DB637D;
+}
+
+.symptom-card.purple .symptom-card-header > svg {
+    color: #8660D8;
+}
+
+.symptom-card.blue .symptom-card-header > svg {
+    color: #3979D8;
+}
+
+.symptom-card.yellow .symptom-card-header > svg {
+    color: #D69B00;
+}
+
+.symptom-card.green .symptom-card-header > svg {
+    color: #0E9F63;
+}
+
+.symptom-card.rose .symptom-card-header > svg {
+    color: #C76B87;
+}
+
+.symptom-card-header h3 {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.symptom-card-header p {
+    font-size: 10px;
+    color: #475569;
+    line-height: 1.3;
+    margin-top: 1px;
+}
+
+
+/* =========================
+   SYMPTOM OPTIONS
+========================= */
+
+.symptom-options {
+    padding: 7px 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.symptom-options label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #172033;
+    cursor: pointer;
+}
+
+.symptom-options input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    margin-top: 1px;
+    border: 1.5px solid #8B949E;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.symptom-options input:checked {
+    background: #07815F;
+    border-color: #07815F;
+}
+
+.symptom-options input:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.symptom-options input:focus-visible {
+    outline: 3px solid rgba(5, 150, 105, 0.3);
+    outline-offset: 2px;
+}
+
+
+/* =========================
+   NARRATIVE
+========================= */
+
+.narrative-section {
+    border: 1px solid #E2E5EA;
+    border-radius: 15px;
+    background: #FCFCFD;
+    padding: 12px 15px 9px;
+}
+
+.narrative-section > label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.narrative-section > label svg {
+    width: 20px;
+    height: 20px;
+    color: #07815F;
+}
+
+.narrative-section textarea {
+    display: block;
+    width: 100%;
+    min-height: 94px;
+    padding: 11px 12px;
+    border: 1px solid #D6DBE2;
+    border-radius: 11px;
+    background: #FFFFFF;
+    color: #172033;
+    font-size: 13px;
+    line-height: 1.55;
+    resize: vertical;
+    outline: none;
+}
+
+.narrative-section textarea::placeholder {
+    color: #8993A0;
+}
+
+.narrative-section textarea:focus {
+    border-color: #07815F;
+    box-shadow: 0 0 0 3px rgba(8, 121, 91, 0.09);
+}
+
+.character-count {
+    text-align: right;
+    font-size: 11px;
+    color: #64748B;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   AI OPTION
+========================= */
+
+.ai-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.ai-option label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #263238;
+}
+
+.ai-option input {
+    width: 19px;
+    height: 19px;
+    accent-color: #07815F;
+    cursor: pointer;
+}
+
+.info-icon {
+    display: inline-flex;
+    color: #7B8794;
+    cursor: help;
+}
+
+.info-icon svg {
+    width: 17px;
+    height: 17px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+    .symptom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .symptom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .symptom-card-header h3 {
+        font-size: 14px;
+    }
+
+    .symptom-card-header p {
+        font-size: 11px;
+    }
+
+    .symptom-options label {
+        font-size: 13px;
+    }
+
+    .narrative-section {
+        padding: 12px;
+    }
+
+    .narrative-section > label {
+        font-size: 13px;
+        align-items: flex-start;
+    }
+}
+
+/* Form validation feedback */
+
+#form-feedback {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-error {
+    color: #B42318;
+    background: #FEF3F2;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.form-success {
+    color: #067647;
+    background: #ECFDF3;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+/* Selected symptom card */
+
+.symptom-card.has-selection {
+    border-color: #72B99A;
+    box-shadow: 0 0 0 1px rgba(8, 121, 91, 0.10);
+}
+/* ==========================================
+   MENOBRIEF - STEP 2 PROFESSIONAL DESIGN
+========================================== */
+
+#step-two-panel {
+    width: 100%;
+}
+
+#step-two-panel .form-heading {
+    margin-bottom: 22px;
+}
+
+#step-two-panel .form-heading h2 {
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+#step-two-panel .form-heading p {
+    max-width: 720px;
+    line-height: 1.6;
+}
+
+.section-eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    color: #07815F;
+    margin-bottom: 8px;
+}
+
+/* Individual sections */
+
+#step-two-panel .details-section {
+    display: block;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E6EAE8;
+    border-radius: 15px;
+    padding: 19px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025);
+}
+
+#step-two-panel .details-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #EDF0EE;
+}
+
+#step-two-panel .details-section-heading > svg {
+    width: 39px;
+    height: 39px;
+    padding: 9px;
+    border-radius: 11px;
+    background: #E8F6ED;
+    color: #08795B;
+    flex-shrink: 0;
+}
+
+#step-two-panel .details-section-heading h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #172033;
+}
+
+#step-two-panel .details-section-heading p {
+    font-size: 11px;
+    color: #7B8794;
+    margin-top: 3px;
+}
+
+/* Field layout */
+
+#step-two-panel .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px;
+}
+
+#step-two-panel .detail-field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    min-width: 0;
+}
+
+#step-two-panel .detail-field.full-width {
+    grid-column: 1 / -1;
+}
+
+#step-two-panel .detail-field > label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #344054;
+}
+
+/* Professional input controls */
+
+#step-two-panel .detail-field input,
+#step-two-panel .detail-field select,
+#step-two-panel .detail-field textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 45px;
+    padding: 11px 13px;
+    border: 1px solid #DCE2E7;
+    border-radius: 9px;
+    background-color: #FCFDFD;
+    color: #263445;
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    outline: none;
+    transition: all 180ms ease;
+}
+
+#step-two-panel .detail-field select {
+    cursor: pointer;
+}
+
+#step-two-panel .detail-field textarea {
+    min-height: 105px;
+    resize: vertical;
+}
+
+#step-two-panel .detail-field input:hover,
+#step-two-panel .detail-field select:hover,
+#step-two-panel .detail-field textarea:hover {
+    border-color: #A9CDB8;
+}
+
+#step-two-panel .detail-field input:focus,
+#step-two-panel .detail-field select:focus,
+#step-two-panel .detail-field textarea:focus {
+    border-color: #07815F;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(8, 121, 91, 0.09);
+}
+
+#step-two-panel .detail-field small {
+    font-size: 11px;
+    color: #89939F;
+    line-height: 1.5;
+}
+
+/* Daily life impact */
+
+#step-two-panel .impact-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#step-two-panel .impact-options label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #E7EBE9;
+    border-radius: 9px;
+    background: #FCFDFC;
+    color: #344054;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 180ms ease;
+}
+
+#step-two-panel .impact-options label:hover {
+    border-color: #A9CDB8;
+    background: #F5FAF6;
+}
+
+#step-two-panel .impact-options label:has(input:checked) {
+    background: #EAF7EF;
+    border-color: #82BE9A;
+    color: #086B4F;
+}
+
+#step-two-panel .impact-options input {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    accent-color: #08795B;
+}
+
+/* Privacy panel */
+
+#step-two-panel .details-privacy-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 14px 16px;
+    margin: 17px 0;
+    border: 1px solid #D9EDE0;
+    border-radius: 11px;
+    background: #F1F9F3;
+    color: #286449;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+#step-two-panel .details-privacy-note svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Step 2 navigation */
+
+#step-two-panel .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+#step-two-panel .secondary-button {
+    min-height: 45px;
+    padding: 10px 20px;
+    border: 1px solid #DCE2E7;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #344054;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#step-two-panel .secondary-button:hover {
+    background: #F3F7F4;
+    border-color: #9BBDA8;
+}
+
+#step-two-panel .primary-button {
+    min-height: 45px;
+}
+
+/* Feedback */
+
+#step-two-feedback {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#step-two-feedback.form-error {
+    padding: 11px;
+    border-radius: 9px;
+    color: #B42318;
+    background: #FEF3F2;
+}
+
+#step-two-feedback.form-success {
+    padding: 11px;
+    border-radius: 9px;
+    color: #067647;
+    background: #ECFDF3;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    #step-two-panel .form-heading h2 {
+        font-size: 21px;
+    }
+
+    #step-two-panel .details-section {
+        padding: 14px;
+    }
+
+    #step-two-panel .details-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #step-two-panel .detail-field.full-width {
+        grid-column: auto;
+    }
+
+    #step-two-panel .impact-options {
+        grid-template-columns: 1fr;
+    }
+
+    #step-two-panel .form-actions {
+        flex-direction: row;
+    }
+
+    #step-two-panel .form-actions button {
+        flex: 1;
+    }
+}
+
