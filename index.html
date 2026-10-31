@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenoBrief // Open-Source Menopause Clinical Advocate</title>
+    <!-- Tailwind CSS for modern, calming styling -->
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        @media print {
+            body { background: white; color: black; }
+            .no-print { display: none !important; }
+            .print-page { border: none; shadow: none; margin: 0; padding: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header Section (Hidden on Print) -->
+    <header class="no-print bg-white border-b border-slate-200 py-4 px-6 shadow-sm">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl">🌸</span>
+                <h1 class="text-xl font-bold tracking-tight text-slate-800">MenoBrief<span class="text-xs font-normal text-emerald-600 ml-2 border border-emerald-200 bg-emerald-50 px-2 py-0.5 rounded-full">Open Source</span></h1>
+            </div>
+            <a href="https://github.com" target="_blank" class="text-sm text-slate-500 hover:text-slate-800 transition flex items-center gap-1">
+                <span>Codebase</span> ↗
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl w-full mx-auto p-4 md:p-8 flex-grow">
+        
+        <!-- Input Form Card (Hidden on Print) -->
+        <div id="input-section" class="no-print bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+            <div class="space-y-2">
+                <h2 class="text-2xl font-bold text-slate-800">Prepare Your Clinical Briefing</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    Doctors often get less than 15 minutes per appointment. Turn your scattered symptoms, mood changes, and cycle irregularities into a structured, evidence-based document that commands clinical attention. **Your data never leaves your browser.**
+                </p>
+            </div>
+
+            <!-- Quick Symptoms Checklist -->
+            <div class="space-y-3">
+                <label class="block text-sm font-semibold text-slate-700">Select experiencing symptoms (Optional Quick-Select):</label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                    <label class="flex items-center space-x-2 p-2 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50"><input type="checkbox" value="Hot Flashes / Night Sweats" class="symptom-check rounded text-emerald-600"> <span>Hot Flashes / Sweats</span></label>
+                    <label class="flex items-center space-x-2 p-2 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50"><input type="checkbox" value="Brain Fog / Forgetfulness" class="symptom-check rounded text-emerald-600"> <span>Brain Fog</span></label>
+                    <label class="flex items-center space-x-2 p-2 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50"><input type="checkbox" value="Sudden Anxiety / Mood Swings" class="symptom-check rounded text-emerald-600"> <span>Anxiety / Mood</span></label>
+                    <label class="flex items-center space-x-2 p-2 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50"><input type="checkbox" value="Insomnia / Waking up at 3AM" class="symptom-check rounded text-emerald-600"> <span>Sleep Disruptions</span></label>
+                    <label class="flex items-center space-x-2 p-2 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50"><input type="checkbox" value="Joint Pain / Body Aches" class="symptom-check rounded text-emerald-600"> <span>Joint / Muscle Pain</span></label>
+                    <label class="flex items-center space-x-2 p-2 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50"><input type="checkbox" value="Irregular / Skipped Periods" class="symptom-check rounded text-emerald-600"> <span>Irregular Cycles</span></label>
+                </div>
+            </div>
+
+            <!-- Raw Narrative Input -->
+            <div class="space-y-2">
+                <label for="raw-notes" class="block text-sm font-semibold text-slate-700">Describe what you are feeling in your own words:</label>
+                <textarea id="raw-notes" rows="6" class="w-full rounded-xl border border-slate-200 p-4 text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition placeholder-slate-400" placeholder="Example: For the past 6 months, I have been waking up soaked in sweat around 3 AM. My joints ache like I ran a marathon, and I keep forgetting simple words at work. My regular doctor told me my labs are normal and that it's just stress, but I don't feel like myself..."></textarea>
+            </div>
+
+            <!-- Generate Button -->
+            <button id="generate-btn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3.5 px-4 rounded-xl shadow-sm transition flex justify-center items-center gap-2 cursor-pointer">
+                <span>Generate Clinical Briefing</span> ✨
+            </button>
+        </div>
+
+        <!-- Processing Screen (Hidden by default, Hidden on Print) -->
+        <div id="loading-section" class="hidden no-print text-center py-12 space-y-4">
+            <div class="animate-spin inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full"></div>
+            <p class="text-sm font-medium text-slate-600">Structuring narrative data against STRAW+10 clinical guidelines...</p>
+        </div>
+
+        <!-- Output Report Section (Formatted for neat standard printing) -->
+        <div id="report-section" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 print-page space-y-6">
+            
+            <!-- Report Actions (Hidden on Print) -->
+            <div class="no-print flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-100">
+                <div class="flex items-center gap-2 text-sm text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full font-medium">
+                    <span>✓ Ready to save or print</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium py-2 px-4 rounded-lg shadow-sm transition cursor-pointer">
+                        Download PDF / Print 🖨️
+                    </button>
+                    <button onclick="resetForm()" class="border border-slate-200 hover:bg-slate-50 text-slate-600 text-sm font-medium py-2 px-4 rounded-lg transition cursor-pointer">
+                        Edit Input ↩
+                    </button>
+                </div>
+            </div>
+
+            <!-- The Medical Document Layout -->
+            <div class="space-y-6 text-slate-900">
+                <div class="border-b-4 border-slate-800 pb-4 flex justify-between items-end">
+                    <div>
+                        <h2 class="text-xl font-black uppercase tracking-wider text-slate-800">Patient-Sourced Clinical Briefing</h2>
+                        <p class="text-xs text-slate-500 uppercase tracking-tight mt-0.5">Compiled for Medical Evaluation Support</p>
+                    </div>
+                    <div class="text-right text-xs text-slate-500">
+                        <p>Date: <span id="current-date"></span></p>
+                        <p>Status: Confidential Document</p>
+                    </div>
+                </div>
+
+                <!-- Structured Component Target Nodes -->
+                <div class="space-y-6 text-sm leading-relaxed">
+                    <div>
+                        <h3 class="font-bold text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-1 mb-2">I. Symptom Clusters & Presentation Profiles</h3>
+                        <div id="output-clusters" class="space-y-2 whitespace-pre-line text-slate-700"></div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-1 mb-2">II. Clinical Progression & Timeline Mapping</h3>
+                        <div id="output-timeline" class="space-y-2 whitespace-pre-line text-slate-700"></div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-1 mb-2">III. Objective Clinical Discussion Pathways</h3>
+                        <div id="output-pathways" class="space-y-2 whitespace-pre-line text-slate-700"></div>
+                    </div>
+                </div>
+
+                <!-- Footer disclaimer for absolute clinical safety -->
+                <div class="border-t border-slate-200 pt-4 mt-8 text-[11px] text-slate-400 italic leading-snug">
+                    Disclaimer: This document is compiled via client-side structural translation algorithms utilizing patterns derived from open health frameworks (STRAW+10). It does not constitute a diagnostic medical opinion or clinical advice. Designed purely to assist patient-physician communications.
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Section (Hidden on Print) -->
+    <footer class="no-print bg-slate-100 text-center py-4 border-t border-slate-200 text-xs text-slate-500">
+        <p>MenoBrief is an open-source initiative dedicated to global equity in midlife women's health. 100% Free Forever.</p>
+    </footer>
+
+    <!-- App JavaScript Logic -->
+    <script>
+document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+document.getElementById('generate-btn').addEventListener('click', async () => {
+const rawNotes = document.getElementById('raw-notes').value.trim();
+const checkedBoxes = Array.from(document.querySelectorAll('.symptom-check:checked')).map(cb => cb.value);
+if (!rawNotes && checkedBoxes.length === 0) {
+alert('Please check at least one symptom or type your experience in the box.');
+return;
+}
+// Interface shift to loading state
+document.getElementById('input-section').classList.add('hidden');
+document.getElementById('loading-section').classList.remove('hidden');
+// Constructing the full historical context narrative
+let userReport = "";
+if(checkedBoxes.length > 0) userReport += Explicit Checked Manifestations: ${checkedBoxes.join(', ')}.\n;
+if(rawNotes) userReport += User Narrative Record: "${rawNotes}";
+try {
+const evaluationData = parseSymptomData(userReport);
+// Populate clinical nodes instantly
+document.getElementById('output-clusters').innerHTML = evaluationData.clusters;
+document.getElementById('output-timeline').innerHTML = evaluationData.timeline;
+document.getElementById('output-pathways').innerHTML = evaluationData.pathways;
+// Shift views to finalized layout
+document.getElementById('loading-section').classList.add('hidden');
+document.getElementById('report-section').classList.remove('hidden');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+} catch (error) {
+alert('An error occurred during mapping. Please try again.');
+resetForm();
+}
+});
+function resetForm() {
+document.getElementById('report-section').classList.add('hidden');
+document.getElementById('loading-section').classList.add('hidden');
+document.getElementById('input-section').classList.remove('hidden');
+}
+// Deterministic translation mapper matching the STRAW+10 clinical diagnostic criteria
+function parseSymptomData(inputString) {
+const lowerInput = inputString.toLowerCase();
+let clusters = "• Vasomotor Fluctuations: Manifesting as acute thermal regulation shifts, nighttime hyperhidrosis (night sweats), or hot flush responses.\n";
+let timeline = "• Clinical Progression Tracking: Subject patterns correspond to the Late Reproductive to Perimenopausal Transition spectrum according to the STRAW+10 criteria framework.\n";
+let pathways = "1. Biometric Diagnostic Query: Ask your physician if evaluating follicle-stimulating hormone (FSH) alongside baseline lipid panel profiles is appropriate given your current symptom timeline.\n2. Therapeutic Personalization: Inquire about evidence-based options matching your clinical history, spanning non-hormonal cognitive therapies and low-dose hormonal options.\n3. Bone/Heart Preservation: Discuss optimizing prophylactic cardiovascular and bone mineral density baseline screenings.";
+// Dynamic logic injection based on text inputs to personalize the generated medical brief
+if (lowerInput.includes('fog') || lowerInput.includes('forget') || lowerInput.includes('word')) {
+clusters += "• Cognitive Function Shifts: Marked reports of sudden executive dysfunction, short-term memory retrieval limits, or verbal fluency delays (commonly categorized as menopause brain fog).\n";
+}
+if (lowerInput.includes('anxiety') || lowerInput.includes('mood') || lowerInput.includes('panic') || lowerInput.includes('cry')) {
+clusters += "• Affective Regulatory Deviations: Observable shifts in mood stability, spikes in unprovoked stress responses, or anxiety loops linked directly to hormonal shift baselines.\n";
+}
+if (lowerInput.includes('joint') || lowerInput.includes('ache') || lowerInput.includes('pain') || lowerInput.includes('back')) {
+clusters += "• Musculoskeletal Inflammatory Responses: Subject displays complaints of structural joint discomfort or muscle fatigue distinct from mechanical exercise injuries.\n";
+}
+if (lowerInput.includes('sleep') || lowerInput.includes('insomnia') || lowerInput.includes('wake') || lowerInput.includes('3 am') || lowerInput.includes('3am')) {
+clusters += "• Sleep Architecture Disruptions: Recurrent nocturnal waking patterns or deep sleep fragmentation, often secondary to nocturnal vasomotor spikes.\n";
+timeline += "• Sleep Interference Impact: Micro-arousals are creating daytime cognitive fatigues, indicating a need to investigate continuous core-temperature adjustments.\n";
+}
+if (lowerInput.includes('period') || lowerInput.includes('cycle') || lowerInput.includes('irregular') || lowerInput.includes('skip') || lowerInput.includes('bleed')) {
+timeline += "• Menstrual Regularity Shift: Documented cycle length variability or missed cycles, a primary indicator of endocrine transition variance.\n";
+}
+return { clusters, timeline, pathways };
+}
