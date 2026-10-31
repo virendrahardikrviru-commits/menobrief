@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MenoBrief // Open-Source Menopause Clinical Advocate</title>
-    <!-- Rock-solid Stable Tailwind v3 Production Script Wrapper -->
-    <script src="https://tailwindcss.com"></script>
+    <!-- Tailwind CSS v3 — working production CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @media print {
             body { background: white; color: black; }
@@ -16,7 +16,6 @@
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Header Section (Hidden on Print) -->
     <header class="no-print bg-white border-b border-gray-200 py-4 px-6 shadow-sm">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
@@ -29,21 +28,19 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
     <main class="max-w-4xl w-full mx-auto p-4 md:p-8 flex-grow">
         
-        <!-- Input Form Card (Hidden on Print) -->
         <div id="input-section" class="no-print bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8 space-y-6">
             <div class="space-y-2">
                 <h2 class="text-2xl font-bold text-gray-800">Prepare Your Clinical Briefing</h2>
                 <p class="text-gray-500 text-sm leading-relaxed">
-                    Doctors often get less than 15 minutes per appointment. Turn your scattered symptoms, mood changes, and cycle irregularities into a structured, evidence-based document that commands clinical attention. **Your data never leaves your browser.**
+                    Doctors often get less than 15 minutes per appointment. Turn your scattered symptoms, mood changes, and cycle irregularities into a structured, evidence-based document that commands clinical attention. Your data never leaves your browser — it is sent directly to Google Gemini using your own free API key.
                 </p>
+                <p id="key-status" class="text-xs text-gray-500"></p>
             </div>
 
-            <!-- Quick Symptoms Checklist -->
             <div class="space-y-3">
-                <label class="block text-sm font-semibold text-gray-700">Select experiencing symptoms (Optional Quick-Select):</label>
+                <label class="block text-sm font-semibold text-gray-700">Select symptoms (Optional Quick-Select):</label>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                     <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"><input type="checkbox" value="Hot Flashes / Night Sweats" class="symptom-check rounded text-emerald-600"> <span class="ml-1">Hot Flashes / Sweats</span></label>
                     <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"><input type="checkbox" value="Brain Fog / Forgetfulness" class="symptom-check rounded text-emerald-600"> <span class="ml-1">Brain Fog</span></label>
@@ -54,28 +51,24 @@
                 </div>
             </div>
 
-            <!-- Raw Narrative Input -->
             <div class="space-y-2">
                 <label for="raw-notes" class="block text-sm font-semibold text-gray-700">Describe what you are feeling in your own words:</label>
                 <textarea id="raw-notes" rows="6" class="w-full rounded-xl border border-gray-200 p-4 text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition placeholder-gray-400" placeholder="Example: For the past 6 months, I have been waking up soaked in sweat around 3 AM. My joints ache like I ran a marathon, and I keep forgetting simple words at work. My regular doctor told me my labs are normal and that it's just stress, but I don't feel like myself..."></textarea>
             </div>
 
-            <!-- Generate Button -->
             <button id="generate-btn" class="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium py-3.5 px-4 rounded-xl shadow-sm transition flex justify-center items-center gap-2 cursor-pointer">
                 <span>Generate Clinical Briefing</span> ✨
             </button>
+            <button id="reset-key-btn" class="hidden text-xs text-gray-400 hover:text-red-500 underline transition">Forget saved API key</button>
         </div>
 
-        <!-- Processing Screen (Hidden by default, Hidden on Print) -->
         <div id="loading-section" class="hidden no-print text-center py-12 space-y-4">
             <div class="animate-spin inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full mb-2"></div>
-            <p class="text-sm font-medium text-gray-600">Structuring narrative data against STRAW+10 clinical guidelines...</p>
+            <p class="text-sm font-medium text-gray-600">Analyzing symptoms and structuring clinical briefing via Gemini...</p>
         </div>
 
-        <!-- Output Report Section (Formatted for neat standard printing) -->
         <div id="report-section" class="hidden bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12 print-page space-y-6">
             
-            <!-- Report Actions (Hidden on Print) -->
             <div class="no-print flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-gray-100">
                 <div class="flex items-center gap-2 text-sm text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full font-medium">
                     <span>✓ Ready to save or print</span>
@@ -90,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- The Medical Document Layout -->
             <div class="space-y-6 text-gray-900">
                 <div class="border-b-4 border-gray-800 pb-4 flex justify-between items-end">
                     <div>
@@ -103,15 +95,14 @@
                     </div>
                 </div>
 
-                <!-- Structured Component Target Nodes -->
                 <div class="space-y-6 text-sm leading-relaxed">
                     <div>
-                        <h3 class="font-bold text-gray-800 uppercase tracking-wide border-b border-gray-200 pb-1 mb-2">I. Symptom Clusters & Presentation Profiles</h3>
+                        <h3 class="font-bold text-gray-800 uppercase tracking-wide border-b border-gray-200 pb-1 mb-2">I. Symptom Clusters &amp; Presentation Profiles</h3>
                         <div id="output-clusters" class="space-y-2 whitespace-pre-line text-gray-700"></div>
                     </div>
 
                     <div>
-                        <h3 class="font-bold text-gray-800 uppercase tracking-wide border-b border-gray-200 pb-1 mb-2">II. Clinical Progression & Timeline Mapping</h3>
+                        <h3 class="font-bold text-gray-800 uppercase tracking-wide border-b border-gray-200 pb-1 mb-2">II. Clinical Progression &amp; Timeline Mapping</h3>
                         <div id="output-timeline" class="space-y-2 whitespace-pre-line text-gray-700"></div>
                     </div>
 
@@ -121,79 +112,128 @@
                     </div>
                 </div>
 
-                <!-- Footer disclaimer for absolute clinical safety -->
                 <div class="border-t border-gray-200 pt-4 mt-8 text-[11px] text-gray-400 italic leading-snug">
-                    Disclaimer: This document is compiled via client-side structural translation algorithms utilizing patterns derived from open health frameworks (STRAW+10). It does not constitute a diagnostic medical opinion or clinical advice. Designed purely to assist patient-physician communications.
+                    Disclaimer: This document is generated via a large language model (Google Gemini) using the patient's own free API key. It does not constitute a diagnostic medical opinion or clinical advice. Designed purely to assist patient-physician communications.
                 </div>
             </div>
-
         </div>
     </main>
 
-    <!-- Footer Section (Hidden on Print) -->
     <footer class="no-print bg-gray-100 text-center py-4 border-t border-gray-200 text-xs text-gray-500">
         <p>MenoBrief is an open-source initiative dedicated to global equity in midlife women's health. 100% Free Forever.</p>
     </footer>
 
-    <!-- App JavaScript Logic -->
     <script>
-document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-document.getElementById('generate-btn').addEventListener('click', async () => {
-const rawNotes = document.getElementById('raw-notes').value.trim();
-const checkedBoxes = Array.from(document.querySelectorAll('.symptom-check:checked')).map(cb => cb.value);
-if (!rawNotes && checkedBoxes.length === 0) {
-alert('Please check at least one symptom or type your experience in the box.');
-return;
-}
-// Interface shift to loading state
-document.getElementById('input-section').classList.add('hidden');
-document.getElementById('loading-section').classList.remove('hidden');
-// Constructing the full historical context narrative
-let userReport = "";
-if(checkedBoxes.length > 0) userReport += Explicit Checked Manifestations: ${checkedBoxes.join(', ')}.\n;
-if(rawNotes) userReport += User Narrative Record: "${rawNotes}";
-try {
-const evaluationData = parseSymptomData(userReport);
-// Populate clinical nodes instantly
-document.getElementById('output-clusters').innerHTML = evaluationData.clusters;
-document.getElementById('output-timeline').innerHTML = evaluationData.timeline;
-document.getElementById('output-pathways').innerHTML = evaluationData.pathways;
-// Shift views to finalized layout
-document.getElementById('loading-section').classList.add('hidden');
-document.getElementById('report-section').classList.remove('hidden');
-window.scrollTo({ top: 0, behavior: 'smooth' });
-} catch (error) {
-alert('An error occurred during mapping. Please try again.');
-resetForm();
-}
-});
-function resetForm() {
-document.getElementById('report-section').classList.add('hidden');
-document.getElementById('loading-section').classList.add('hidden');
-document.getElementById('input-section').classList.remove('hidden');
-}
-// Deterministic translation mapper matching the STRAW+10 clinical diagnostic criteria
-function parseSymptomData(inputString) {
-const lowerInput = inputString.toLowerCase();
-let clusters = "• Vasomotor Fluctuations: Manifesting as acute thermal regulation shifts, nighttime hyperhidrosis (night sweats), or hot flush responses.\n";
-let timeline = "• Clinical Progression Tracking: Subject patterns correspond to the Late Reproductive to Perimenopausal Transition spectrum according to the STRAW+10 criteria framework.\n";
-let pathways = "1. Biometric Diagnostic Query: Ask your physician if evaluating follicle-stimulating hormone (FSH) alongside baseline lipid panel profiles is appropriate given your current symptom timeline.\n2. Therapeutic Personalization: Inquire about evidence-based options matching your clinical history, spanning non-hormonal cognitive therapies and low-dose hormonal options.\n3. Bone/Heart Preservation: Discuss optimizing prophylactic cardiovascular and bone mineral density baseline screenings.";
-// Dynamic logic injection based on text inputs to personalize the generated medical brief
-if (lowerInput.includes('fog') || lowerInput.includes('forget') || lowerInput.includes('word')) {
-clusters += "• Cognitive Function Shifts: Marked reports of sudden executive dysfunction, short-term memory retrieval limits, or verbal fluency delays (commonly categorized as menopause brain fog).\n";
-}
-if (lowerInput.includes('anxiety') || lowerInput.includes('mood') || lowerInput.includes('panic') || lowerInput.includes('cry')) {
-clusters += "• Affective Regulatory Deviations: Observable shifts in mood stability, spikes in unprovoked stress responses, or anxiety loops linked directly to hormonal shift baselines.\n";
-}
-if (lowerInput.includes('joint') || lowerInput.includes('ache') || lowerInput.includes('pain') || lowerInput.includes('back')) {
-clusters += "• Musculoskeletal Inflammatory Responses: Subject displays complaints of structural joint discomfort or muscle fatigue distinct from mechanical exercise injuries.\n";
-}
-if (lowerInput.includes('sleep') || lowerInput.includes('insomnia') || lowerInput.includes('wake') || lowerInput.includes('3 am') || lowerInput.includes('3am')) {
-clusters += "• Sleep Architecture Disruptions: Recurrent nocturnal waking patterns or deep sleep fragmentation, often secondary to nocturnal vasomotor spikes.\n";
-timeline += "• Sleep Interference Impact: Micro-arousals are creating daytime cognitive fatigues, indicating a need to investigate continuous core-temperature adjustments.\n";
-}
-if (lowerInput.includes('period') || lowerInput.includes('cycle') || lowerInput.includes('irregular') || lowerInput.includes('skip') || lowerInput.includes('bleed')) {
-timeline += "• Menstrual Regularity Shift: Documented cycle length variability or missed cycles, a primary indicator of endocrine transition variance.\n";
-}
-return { clusters, timeline, pathways };
-}
+        const KEY_STORAGE = 'menobrief_gemini_key';
+        const MODEL = 'gemini-1.5-flash';
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        function updateKeyStatus() {
+            const key = localStorage.getItem(KEY_STORAGE);
+            const status = document.getElementById('key-status');
+            const resetBtn = document.getElementById('reset-key-btn');
+            if (key) {
+                status.textContent = '✓ API key saved in this browser. Your notes will be sent directly to Google Gemini.';
+                resetBtn.classList.remove('hidden');
+            } else {
+                status.textContent = 'You will be asked for a free Google Gemini API key (from aistudio.google.com) the first time you generate a briefing. It is stored only in this browser.';
+                resetBtn.classList.add('hidden');
+            }
+        }
+        updateKeyStatus();
+
+        document.getElementById('reset-key-btn').addEventListener('click', () => {
+            localStorage.removeItem(KEY_STORAGE);
+            updateKeyStatus();
+        });
+
+        const SYSTEM_PROMPT = `You are an expert clinical scribe specializing in midlife women's health and endocrinology.
+Your task is to translate the patient's raw, emotional, or scattered symptom descriptions into a highly structured, objective, one-page Clinical Briefing Document.
+
+Respond with EXACTLY three sections, separated by the marker "===SECTION===" on its own line, in this order:
+
+1. SYMPTOM CLUSTERS & PRESENTATION PROFILES
+   Group the patient's reported symptoms into logical clinical clusters (e.g., Vasomotor, Cognitive, Affective/Mood, Musculoskeletal, Sleep Architecture, Menstrual/Endocrine). Use bullet points.
+
+2. CLINICAL PROGRESSION & TIMELINE MAPPING
+   Summarize the timeline and progression. Where applicable, reference established frameworks such as STRAW+10 or NICE guidelines to describe the likely reproductive-aging stage, but do not diagnose.
+
+3. OBJECTIVE CLINICAL DISCUSSION PATHWAYS
+   Provide 3-5 specific, evidence-based questions or discussion points the patient can raise with her physician (e.g., FSH/lipid testing, non-hormonal vs hormonal therapy options, bone and cardiovascular screening).
+
+Tone: objective, clinical, concise, professional. No conversational fluff, no disclaimers, no markdown headings beyond the three numbered sections above. Use plain text with bullet points.`;
+
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            const rawNotes = document.getElementById('raw-notes').value.trim();
+            const checkedBoxes = Array.from(document.querySelectorAll('.symptom-check:checked')).map(cb => cb.value);
+
+            if (!rawNotes && checkedBoxes.length === 0) {
+                alert('Please check at least one symptom or type your experience in the box.');
+                return;
+            }
+
+            let apiKey = localStorage.getItem(KEY_STORAGE);
+            if (!apiKey) {
+                apiKey = prompt('MenoBrief uses Google Gemini for real AI analysis.\n\nPaste your FREE Gemini API key from https://aistudio.google.com/app/apikey\n\nIt is stored only in this browser.');
+                if (!apiKey || !apiKey.trim()) return;
+                apiKey = apiKey.trim();
+                localStorage.setItem(KEY_STORAGE, apiKey);
+                updateKeyStatus();
+            }
+
+            const userReport =
+                (checkedBoxes.length ? `Checked symptoms: ${checkedBoxes.join(', ')}.\n` : '') +
+                (rawNotes ? `Patient narrative: "${rawNotes}"` : '');
+
+            document.getElementById('input-section').classList.add('hidden');
+            document.getElementById('loading-section').classList.remove('hidden');
+
+            try {
+                const res = await fetch(`${API_URL}?key=${encodeURIComponent(apiKey)}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+                        contents: [{ role: 'user', parts: [{ text: userReport }] }],
+                        generationConfig: { temperature: 0.3, maxOutputTokens: 1500 }
+                    })
+                });
+
+                if (!res.ok) {
+                    const errText = await res.text();
+                    throw new Error(`API error ${res.status}: ${errText.slice(0, 200)}`);
+                }
+
+                const data = await res.json();
+                const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!text) throw new Error('No text returned from Gemini.');
+
+                const parts = text.split('===SECTION===').map(s => s.trim());
+                const clusters = parts[0] || '—';
+                const timeline = parts[1] || '—';
+                const pathways = parts[2] || '—';
+
+                document.getElementById('output-clusters').textContent = clusters;
+                document.getElementById('output-timeline').textContent = timeline;
+                document.getElementById('output-pathways').textContent = pathways;
+
+                document.getElementById('loading-section').classList.add('hidden');
+                document.getElementById('report-section').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (err) {
+                console.error(err);
+                alert('Generation failed: ' + err.message + '\n\nIf your key is invalid, click "Forget saved API key" and try again.');
+                resetForm();
+            }
+        });
+
+        function resetForm() {
+            document.getElementById('report-section').classList.add('hidden');
+            document.getElementById('loading-section').classList.add('hidden');
+            document.getElementById('input-section').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
