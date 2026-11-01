@@ -1,23 +1,18 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="MenoBrief is a free, open-source tool that helps women prepare structured menopause clinical briefings.">
+    <meta name="description" content="MenoBrief is a free tool that helps women prepare structured menopause clinical briefings.">
 
-    <title>MenoBrief â€” Menopause Clinical Briefing Tool</title>
-
-    <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>MenoBrief — Menopause Clinical Briefing Tool</title>
 
     <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/vendor/lucide.min.js"></script>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/variables.css">
@@ -49,21 +44,16 @@
 
             <span class="opensource-badge">
                 <i data-lucide="github"></i>
-                Open Source
+                Free Tool
             </span>
 
-            <nav class="top-navigation">
+<nav class="top-navigation">
                 <a href="#home" class="active">Home</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#straw">About STRAW+10</a>
-                <a href="#roadmap">Roadmap</a>
             </nav>
 
-            <a href="https://github.com/" target="_blank"
-               rel="noopener noreferrer" class="github-button">
-                <i data-lucide="github"></i>
-                GitHub
-            </a>
+<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+    <i data-lucide="menu"></i>
+</button>
 
         </header>
 
@@ -86,25 +76,27 @@
                         <span>How It Works</span>
                     </a>
 
-                    <a href="#straw" class="sidebar-link">
-                        <i data-lucide="clipboard-list"></i>
-                        <span>About STRAW+10</span>
-                    </a>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3340903/" target="_blank"
+   rel="noopener noreferrer" class="sidebar-link">
+    <i data-lucide="clipboard-list"></i>
+    <span>About STRAW+10</span>
+</a>
 
-                    <a href="#privacy" class="sidebar-link">
+<a href="privacy.html" class="sidebar-link">
                         <i data-lucide="shield-check"></i>
                         <span>Privacy &amp; Safety</span>
                     </a>
 
-                    <a href="#faq" class="sidebar-link">
+                    <a href="faq.html" class="sidebar-link">
                         <i data-lucide="help-circle"></i>
                         <span>FAQ</span>
                     </a>
 
-                    <a href="#contribute" class="sidebar-link">
-                        <i data-lucide="github"></i>
-                        <span>Contribute on GitHub</span>
-                    </a>
+<a href="https://github.com/virendrahardikrviru-commits/menobrief" target="_blank"
+   rel="noopener noreferrer" class="sidebar-link">
+    <i data-lucide="github"></i>
+    <span>Contribute on GitHub</span>
+</a>
 
                 </nav>
 
@@ -112,7 +104,7 @@
 
                     <i data-lucide="sparkles"></i>
 
-                    <h3>The Clinical<br>Translation Engine</h3>
+                    <h3>Your Clinical Briefing, Clearly Organised</h3>
 
                     <p>
                         Turns your real-life experience into
@@ -123,71 +115,69 @@
 
             </aside>
 
+            <section class="hero-section">
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">
+                        YOUR EXPERIENCE MATTERS
+                    </span>
+
+                    <h1>
+                        Don't let a 15-minute appointment
+                        dismiss 15 years of symptoms.
+                    </h1>
+
+                    <p class="hero-description">
+                        Turn your menopause experience into
+                        a clear, structured clinical briefing
+                        you can take to your doctor.
+                    </p>
+
+                </div>
+
+                <div class="hero-image" aria-label="A woman reflecting peacefully">
+                    <!-- Hero photograph is supplied by assets/images/hero-woman.jpg via CSS -->
+                </div>
+
+                <div class="trust-indicators">
+
+                    <div class="trust-item">
+                        <span class="trust-icon">
+                            <i data-lucide="lock"></i>
+                        </span>
+                        <span>
+                        <strong>Temporary browser memory</strong>
+                        <small>Data is held only while you work; refreshing or closing clears it.</small>
+                        </span>
+                    </div>
+
+                    <div class="trust-item">
+                        <span class="trust-icon">
+                            <i data-lucide="zap"></i>
+                        </span>
+                        <span>
+                            <strong>No Account</strong>
+                            <small>Use instantly, no sign-up</small>
+                        </span>
+                    </div>
+
+                    <div class="trust-item">
+                        <span class="trust-icon">
+                            <i data-lucide="code-2"></i>
+                        </span>
+                        <span>
+                            <strong>Free Tool</strong>
+                            <small>No account or payment required</small>
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
 
             <!-- MAIN CONTENT -->
             <main class="main-content" id="home">
-
-                <!-- HERO -->
-                <section class="hero-section">
-
-                    <div class="hero-content">
-
-                        <span class="eyebrow">
-                            YOUR EXPERIENCE MATTERS
-                        </span>
-
-                        <h1>
-                            Don't let a 15-minute appointment
-                            dismiss 15 years of symptoms.
-                        </h1>
-
-                        <p class="hero-description">
-                            Turn your menopause experience into
-                            a clear, structured clinical briefing
-                            you can take to your doctor.
-                        </p>
-
-                        <div class="trust-indicators">
-
-                            <div class="trust-item">
-                                <span class="trust-icon">
-                                    <i data-lucide="lock"></i>
-                                </span>
-                                <span>
-                                <strong>Temporary browser memory</strong>
-                                <small>Data is held only while you work; refreshing or closing clears it.</small>
-                                </span>
-                            </div>
-
-                            <div class="trust-item">
-                                <span class="trust-icon">
-                                    <i data-lucide="zap"></i>
-                                </span>
-                                <span>
-                                    <strong>No Account</strong>
-                                    <small>Use instantly, no sign-up</small>
-                                </span>
-                            </div>
-
-                            <div class="trust-item">
-                                <span class="trust-icon">
-                                    <i data-lucide="code-2"></i>
-                                </span>
-                                <span>
-                                    <strong>Open Source</strong>
-                                    <small>Free, forever, on GitHub</small>
-                                </span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="hero-image" aria-label="A woman reflecting peacefully">
-                        <!-- Hero photograph is supplied by assets/images/hero-woman.jpg via CSS -->
-                    </div>
-
-                </section>
 
 
                 <!-- WORKSPACE -->
@@ -795,8 +785,8 @@
                     <div class="how-step">
                         <span>2</span>
                         <div>
-                            <strong>AI organises your information</strong>
-                            <p>Your input is structured using relevant clinical context.</p>
+<strong>Your information is organised locally</strong>
+                            <p>Your responses are organised into a clear, doctor-friendly summary.</p>
                         </div>
                     </div>
 
@@ -825,13 +815,13 @@
                         and menopause.
                     </p>
 
-                    <a href="#straw">Learn more â†’</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3340903/" target="_blank" rel="noopener noreferrer">Read the STRAW+10 overview →</a>
 
                 </article>
 
 
-                <!-- DISCLAIMER -->
-                <article class="info-card disclaimer" id="privacy">
+<!-- DISCLAIMER -->
+                <article class="info-card disclaimer" id="disclaimer">
 
                     <div class="info-card-heading">
                         <i data-lucide="shield-check"></i>
@@ -856,28 +846,40 @@
         <footer class="footer">
 
             <p>
-                MenoBrief is an open-source initiative dedicated
-                to improving communication in women's health.
+                MenoBrief is dedicated to improving communication in women's health.
             </p>
 
-            <strong>100% Free Forever.</strong>
+            <strong>Free to use.</strong>
 
         </footer>
 
     </div>
 
 
+    <!-- Mobile Navigation Drawer -->
+    <div class="nav-drawer" id="nav-drawer">
+        <div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>
+        <nav class="nav-drawer-panel" id="nav-drawer-panel">
+            <button class="nav-drawer-close" id="nav-drawer-close" aria-label="Close navigation menu">
+                <i data-lucide="x"></i>
+            </button>
+            <ul class="nav-drawer-list">
+                <li><a href="#create" class="nav-drawer-link"><i data-lucide="house"></i><span>Create Briefing</span></a></li>
+                <li><a href="#how-it-works" class="nav-drawer-link"><i data-lucide="circle-help"></i><span>How It Works</span></a></li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3340903/" target="_blank" rel="noopener noreferrer" class="nav-drawer-link"><i data-lucide="clipboard-list"></i><span>About STRAW+10</span></a></li>
+                <li><a href="privacy.html" class="nav-drawer-link"><i data-lucide="shield-check"></i><span>Privacy &amp; Safety</span></a></li>
+                <li><a href="faq.html" class="nav-drawer-link"><i data-lucide="help-circle"></i><span>FAQ</span></a></li>
+                <li><a href="https://github.com/virendrahardikrviru-commits/menobrief" target="_blank" rel="noopener noreferrer" class="nav-drawer-link"><i data-lucide="github"></i><span>Contribute on GitHub</span></a></li>
+            </ul>
+        </nav>
+    </div>
+
     <!-- Application scripts -->
     <script src="assets/js/state.js"></script>
     <script src="assets/js/symptoms.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"></script>
+    <script src="assets/js/vendor/jspdf.umd.min.js"></script>
+    <script src="assets/js/drawer.js"></script>
     <script src="assets/js/app.js"></script>
-
-    <script>
-        if (window.lucide) {
-            lucide.createIcons();
-        }
-    </script>
 
 </body>
 </html>

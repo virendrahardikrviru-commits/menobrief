@@ -410,5 +410,31 @@
     }
 }
 
+/* Ensure CTA links inside information cards retain readable text */
+.info-card > a.primary-button,
+.info-card > a.primary-button:hover,
+.info-card > a.primary-button:focus,
+.info-card > a.primary-button:visited {
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-top: 0;
+    font-size: 14px;
+}
+
+/* Centre CTA text and icon on mobile standalone pages */
+@media (max-width: 650px) {
+    .info-card > a.primary-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+}
+
 /* END STEP 3 REVIEW STYLES */
 

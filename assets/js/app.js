@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const state = window.MenoBriefState;
 
@@ -39,11 +39,12 @@
         element.className = type;
     }
 
-    function clearFeedback(element) {
-        if (!element) return;
-        element.textContent = "";
-        element.className = "";
-    }
+function clearFeedback(element) {
+    if (!element) return;
+    element.textContent = "";
+    element.className = "";
+}
+
 
 
     // STEP NAVIGATION
@@ -1280,6 +1281,7 @@ document.getElementById("print-briefing-button")
                 window.lucide.createIcons();
             }
         }
+
     });
     // STEP 3: CONFIRM INFORMATION
     document.getElementById("confirm-review-button")

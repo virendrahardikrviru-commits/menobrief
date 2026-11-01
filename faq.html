@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Frequently Asked Questions for MenoBrief, a menopause clinical briefing tool.">
+
+    <title>Frequently Asked Questions – MenoBrief</title>
+
+    <!-- Icons -->
+    <script src="assets/js/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="assets/css/print.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <img src="assets/images/lotus.svg" alt="MenoBrief lotus logo">
+                </span>
+
+                <span class="brand-text">
+                    <strong>MenoBrief</strong>
+                    <small>Menopause Clinical Briefing Tool</small>
+                </span>
+            </a>
+
+            <span class="opensource-badge">
+                <i data-lucide="github"></i>
+                Free Tool
+            </span>
+
+            <nav class="top-navigation">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy & Safety</a>
+            </nav>
+
+</header>
+
+        <!-- MAIN LAYOUT -->
+        <div class="dashboard-layout">
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="sidebar">
+
+                <nav class="sidebar-navigation">
+
+                    <a href="index.html" class="sidebar-link">
+                        <i data-lucide="house"></i>
+                        <span>Create Briefing</span>
+                    </a>
+
+                    <a href="index.html#how-it-works" class="sidebar-link">
+                        <i data-lucide="circle-help"></i>
+                        <span>How It Works</span>
+                    </a>
+
+                    <a href="index.html#straw" class="sidebar-link">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>About STRAW+10</span>
+                    </a>
+
+                </nav>
+
+                <div class="sidebar-feature">
+
+                    <i data-lucide="sparkles"></i>
+
+                    <h3>Your Clinical Briefing, Clearly Organised</h3>
+
+                    <p>
+                        Turns your real-life experience into
+                        an objective, doctor-friendly briefing.
+                    </p>
+
+                </div>
+
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content" id="faq">
+
+                <div class="workspace">
+
+                    <section class="hero-section" style="min-height: auto; padding: 22px 30px 18px;">
+
+                        <div class="hero-content">
+
+                            <span class="eyebrow">FREQUENTLY ASKED QUESTIONS</span>
+
+                            <h1>Frequently Asked Questions</h1>
+
+                            <p class="hero-description">
+                                Find answers to common questions about MenoBrief.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                    <!-- FAQ ITEMS -->
+                    <div class="review-section">
+
+                        <details>
+                            <summary>Is MenoBrief free?</summary>
+                            <p>Yes. MenoBrief is free to use.</p>
+                        </details>
+
+                        <details>
+                            <summary>Do I need an account?</summary>
+                            <p>No. You can use the application without registration.</p>
+                        </details>
+
+                        <details>
+                            <summary>Is my health information uploaded?</summary>
+                            <p>No. The application processes the information locally in your browser;
+                            it does not send patient information to a MenoBrief backend.</p>
+                        </details>
+
+                        <details>
+                            <summary>What happens when I refresh or close the page?</summary>
+                            <p>Your temporary working information is cleared. You will need to enter it again
+                            if you want to create another briefing.</p>
+                        </details>
+
+                        <details>
+                            <summary>How do I get my briefing?</summary>
+                            <p>Complete the four steps, review your information, and download the generated PDF.</p>
+                        </details>
+
+                        <details>
+                            <summary>Does MenoBrief diagnose menopause?</summary>
+                            <p>No. MenoBrief is an appointment preparation and communication tool, not a diagnostic
+                            or treatment tool. Always consult a qualified healthcare professional for medical advice.</p>
+                        </details>
+
+                        <details>
+                            <summary>Does MenoBrief use AI?</summary>
+                            <p>No. There is no active AI integration. Information is organised locally using the
+                            application's existing logic.</p>
+                        </details>
+
+                        <details>
+                            <summary>Where is my downloaded PDF stored?</summary>
+                            <p>It is saved through your browser's normal download process to your device. The exact
+                            location depends on your browser's download settings.</p>
+                        </details>
+
+                    </div>
+
+                    <div class="form-actions briefing-actions">
+                        <a href="index.html" class="primary-button" id="back-to-menobrief">
+                            <i data-lucide="house"></i>
+                            Back to MenoBrief
+                        </a>
+                    </div>
+
+                </div>
+
+            </main>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="right-panel">
+
+                <!-- DISCLAIMER -->
+                <article class="info-card disclaimer" id="disclaimer">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Important Disclaimer</h3>
+                    </div>
+
+                    <p>
+                        MenoBrief is an appointment preparation tool,
+                        not a diagnostic or treatment tool.
+                        Always consult a qualified healthcare
+                        professional for medical advice.
+                    </p>
+
+                </article>
+
+                <!-- PRIVACY LINK -->
+                <article class="info-card lavender">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Privacy &amp; Safety</h3>
+                    </div>
+
+                    <p>
+                        Visit the Privacy & Safety page to learn how MenoBrief handles your information.
+                    </p>
+
+                    <a href="privacy.html" class="primary-button">
+                        <i data-lucide="arrow-right"></i>
+                        Privacy &amp; Safety
+                    </a>
+
+                </article>
+
+            </aside>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <p>
+                MenoBrief is dedicated to improving communication in women's health.
+            </p>
+
+            <strong>Free to use.</strong>
+
+        </footer>
+
+    </div>
+
+    <!-- Application scripts -->
+
+</body>
+</html>
