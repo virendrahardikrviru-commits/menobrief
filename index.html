@@ -6,7 +6,12 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#08795B">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="MenoBrief">
     <meta name="description" content="MenoBrief is a free tool that helps women prepare structured menopause clinical briefings.">
 
     <title>MenoBrief — Menopause Clinical Briefing Tool</title>
@@ -49,6 +54,7 @@
 
 <nav class="top-navigation">
                 <a href="#home" class="active">Home</a>
+                <button type="button" id="header-install-button" class="install-nav-link"><i data-lucide="download"></i> Install MenoBrief</button>
             </nav>
 
 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
@@ -870,6 +876,7 @@
                 <li><a href="privacy.html" class="nav-drawer-link"><i data-lucide="shield-check"></i><span>Privacy &amp; Safety</span></a></li>
                 <li><a href="faq.html" class="nav-drawer-link"><i data-lucide="help-circle"></i><span>FAQ</span></a></li>
                 <li><a href="https://github.com/virendrahardikrviru-commits/menobrief" target="_blank" rel="noopener noreferrer" class="nav-drawer-link"><i data-lucide="github"></i><span>Contribute on GitHub</span></a></li>
+                <li><button type='button' id='drawer-install-button' class='nav-drawer-link'><i data-lucide='download'></i><span>Install MenoBrief</span></button></li>
             </ul>
         </nav>
     </div>
@@ -880,6 +887,7 @@
     <script src="assets/js/vendor/jspdf.umd.min.js"></script>
     <script src="assets/js/drawer.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/pwa.js"></script>
 
 </body>
 </html>

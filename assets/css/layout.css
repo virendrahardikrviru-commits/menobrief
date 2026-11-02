@@ -806,3 +806,32 @@ body.locked {
     }
 }
 
+
+/* PWA installation button - desktop */
+.top-navigation .install-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 17px;
+    border: 1px solid #08795B;
+    border-radius: 11px;
+    background: #08795B;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.top-navigation .install-nav-link:hover {
+    background: #06664D;
+    border-color: #06664D;
+}
+
+.top-navigation .install-nav-link svg {
+    width: 16px;
+    height: 16px;
+}

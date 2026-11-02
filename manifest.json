@@ -1,0 +1,37 @@
+﻿{
+  "id": "/",
+  "name": "MenoBrief - Menopause Clinical Briefing Tool",
+  "short_name": "MenoBrief",
+  "description": "A free, privacy-conscious tool to help women prepare structured menopause briefings for healthcare appointments.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#08795B",
+  "categories": [
+    "health",
+    "medical",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "/assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
