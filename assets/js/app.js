@@ -1188,7 +1188,7 @@ document.getElementById("print-briefing-button")
             symptomChips(symptoms);
 
             // 3. PERSONAL AND MENSTRUAL HISTORY
-            section("3. Personal & Menstrual History", C.purple, C.purpleLight, 140);
+            section("3. Personal & Menstrual History", C.purple, C.purpleLight, 120);
 
             infoCard("Age range", details["age-range"],
                 C.purple, C.purpleLight, C.purpleBorder);
