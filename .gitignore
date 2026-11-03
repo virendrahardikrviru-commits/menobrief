@@ -36,3 +36,9 @@ desktop.ini
 *.swo
 *~
 *.orig
+
+e2e/node_modules/
+e2e/test-artifacts/
+
+
+*.before-*

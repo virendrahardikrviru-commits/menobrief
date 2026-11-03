@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ".step-progress .step"
     );
 
+    let isDirty = false;
+
     if (!state || !stepOnePanel || !stepTwoPanel || !stepThreePanel || !stepFourPanel ||
         !continueButton || !backButton || !continueStepTwo ||
         !story || !storyCount) {
@@ -155,13 +157,26 @@ function clearFeedback(element) {
 
         field.addEventListener("input", collectDetails);
         field.addEventListener("change", collectDetails);
+        field.addEventListener("input", () => { isDirty = true; });
+        field.addEventListener("change", () => { isDirty = true; });
     });
 
     document.querySelectorAll(
         'input[name="impact"]'
     ).forEach(input => {
         input.addEventListener("change", collectDetails);
+        input.addEventListener("change", () => { isDirty = true; });
     });
+
+
+    // Track unsaved changes: symptoms and narrative
+    document.querySelectorAll(
+        'input[name="symptoms"]'
+    ).forEach(input => {
+        input.addEventListener("change", () => { isDirty = true; });
+    });
+
+    story.addEventListener("input", () => { isDirty = true; });
 
 
     // STEP 1: CONTINUE TO STEP 2
@@ -396,6 +411,77 @@ function clearFeedback(element) {
         container.appendChild(row);
     }
 
+    function formatDate(dateStr, rejectFuture = false) {
+        if (!dateStr) {
+            return "Not provided";
+        }
+        const d = new Date(dateStr + "T00:00:00");
+        if (isNaN(d.getTime())) {
+            return "Not provided";
+        }
+        const parts = dateStr.split("-");
+        if (parts.length === 3) {
+            const inputYear = parseInt(parts[0], 10);
+            const inputMonth = parseInt(parts[1], 10);
+            const inputDay = parseInt(parts[2], 10);
+            if (d.getFullYear() !== inputYear ||
+                d.getMonth() + 1 !== inputMonth ||
+                d.getDate() !== inputDay) {
+                return "Not provided";
+            }
+        }
+        if (rejectFuture) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (d > today) {
+                console.warn("Date is in the future and was not printed: " + dateStr);
+                return "Not provided";
+            }
+        }
+        const day = d.getDate();
+        const month = d.toLocaleString("en-US", { month: "short" });
+        const year = d.getFullYear();
+        return day + " " + month + " " + year;
+    }
+
+    function buildClinicalSummary() {
+        const patient = state.patient;
+        const details = patient.details || {};
+        const symptoms = patient.symptoms || [];
+        const narrative = patient.narrative || "";
+
+        const parts = [];
+
+        const ageRange = details["age-range"];
+        if (ageRange) parts.push("Patient aged " + ageRange);
+
+        const menstrualStatus = details["menstrual-status"];
+        if (menstrualStatus) parts.push("reporting " + String(menstrualStatus).toLowerCase());
+
+        const cycleLength = details["cycle-length"];
+        if (cycleLength) parts.push("typical cycle length " + cycleLength + " days");
+
+        const lastPeriod = details["last-period"];
+        if (lastPeriod) parts.push("last menstrual period " + formatDate(lastPeriod, true));
+
+        let summary = parts.join(", ");
+        if (summary) summary += ".";
+
+        if (symptoms.length) {
+            const shown = symptoms.slice(0, 5);
+            const rest = symptoms.length - shown.length;
+            const more = rest > 0 ? ", and " + rest + " more" : "";
+            summary += " Reports " + symptoms.length + " symptom" + (symptoms.length === 1 ? "" : "s") + " (" + shown.join(", ") + more + ").";
+        }
+
+        if (!summary) summary = "No structured information provided.";
+
+        return {
+            summary: summary,
+            patientWords: narrative.trim() ? narrative.trim() : null
+        };
+    }
+
     function generateBriefing() {
         collectDetails();
 
@@ -421,16 +507,23 @@ function clearFeedback(element) {
         });
 
         document.getElementById("briefing-date").textContent =
-            new Date().toLocaleDateString();
+            formatDate(new Date().toISOString().split("T")[0]);
 
         const summary = document.getElementById("briefing-summary");
+        const summaryResult = buildClinicalSummary();
 
         const summaryText = document.createElement("p");
-        summaryText.textContent = narrative.trim()
-            ? narrative
-            : "No personal symptom description was provided.";
-
+        summaryText.textContent = summaryResult.summary;
         summary.appendChild(summaryText);
+
+        if (summaryResult.patientWords) {
+            const heading = document.createElement("h4");
+            heading.textContent = "In the patient's words";
+            summary.appendChild(heading);
+            const quote = document.createElement("blockquote");
+            quote.textContent = summaryResult.patientWords;
+            summary.appendChild(quote);
+        }
 
         addBriefingRow(
             "briefing-symptoms",
@@ -453,7 +546,7 @@ function clearFeedback(element) {
         addBriefingRow(
             "briefing-personal",
             "Last menstrual period",
-            details["last-period"]
+            formatDate(details["last-period"], true)
         );
 
         addBriefingRow(
@@ -548,6 +641,7 @@ function clearFeedback(element) {
             if (field) field.value = "";
         });
 
+        isDirty = false;
         updateNarrative();
         showStep(1);
 
@@ -818,7 +912,6 @@ document.getElementById("print-briefing-button")
             }
 
             const lotus = await imageAsPng("assets/images/lotus.svg");
-            const hero = await imageAsPng("assets/images/hero-woman.jpg", true);
 
             const pinkBotanical = await imageAsPng(
                 "assets/images/botanical-pink.svg"
@@ -867,19 +960,6 @@ document.getElementById("print-briefing-button")
 
             y += 30;
 
-            // WIDE HOMEPAGE HERO IMAGE
-            if (hero) {
-                ensureSpace(49);
-
-                doc.addImage(hero, "PNG", M, y, CW, 43);
-
-                doc.setDrawColor(...C.pinkBorder);
-                doc.setLineWidth(0.35);
-                doc.roundedRect(M, y, CW, 43, 2.5, 2.5, "S");
-
-                y += 48;
-            }
-
             // DOCUMENT TITLE
             doc.setFont("helvetica", "bold");
             doc.setFontSize(17);
@@ -897,15 +977,15 @@ document.getElementById("print-briefing-button")
                 }
             );
 
-            textBlock("Generated: " + new Date().toLocaleDateString(), {
+            textBlock("Generated: " + formatDate(new Date().toISOString().split("T")[0]), {
                 fontSize: 8,
                 color: C.muted,
                 after: 4
             });
 
             // SECTION HEADING
-            function section(title, color, pale) {
-                ensureSpace(18);
+            function section(title, color, pale, contentHeight) {
+                ensureSpace(18 + (contentHeight || 0));
                 y += 3;
 
                 doc.setFillColor(...pale);
@@ -939,7 +1019,7 @@ document.getElementById("print-briefing-button")
                     CW - 12
                 );
 
-                const cardHeight = Math.max(17, 9 + lines.length * 4.6);
+                const cardHeight = Math.max(15, 8 + lines.length * 4.2);
 
                 ensureSpace(cardHeight + 3);
 
@@ -962,7 +1042,7 @@ document.getElementById("print-briefing-button")
                 doc.setTextColor(...C.text);
                 doc.text(lines, M + 7, y + 8);
 
-                y += cardHeight + 3;
+                y += cardHeight + 2;
             }
 
             // PERSONAL NARRATIVE CARD
@@ -1003,7 +1083,7 @@ document.getElementById("print-briefing-button")
                     doc.setTextColor(...C.text);
                     doc.text(chunk, M + 7, y + 4);
 
-                    y += cardHeight + 3;
+                y += cardHeight + 3;
                     index += chunk.length;
                 }
             }
@@ -1093,20 +1173,22 @@ document.getElementById("print-briefing-button")
             }
 
             // 1. CLINICAL SUMMARY
-            section("1. Clinical Summary", C.purple, C.purpleLight);
+            section("1. Clinical Summary", C.purple, C.purpleLight, 100);
 
-            narrativeCard(
-                narrative.trim()
-                    ? narrative
-                    : "No personal symptom description was provided."
-            );
+            const summaryResult = buildClinicalSummary();
+            narrativeCard(summaryResult.summary);
+
+            if (summaryResult.patientWords) {
+                section("In the patient's words", C.purple, C.purpleLight, 40);
+                narrativeCard(summaryResult.patientWords);
+            }
 
             // 2. REPORTED SYMPTOMS
-            section("2. Reported Symptoms", C.green, C.greenLight);
+            section("2. Reported Symptoms", C.green, C.greenLight, 50);
             symptomChips(symptoms);
 
             // 3. PERSONAL AND MENSTRUAL HISTORY
-            section("3. Personal & Menstrual History", C.purple, C.purpleLight);
+            section("3. Personal & Menstrual History", C.purple, C.purpleLight, 140);
 
             infoCard("Age range", details["age-range"],
                 C.purple, C.purpleLight, C.purpleBorder);
@@ -1114,7 +1196,7 @@ document.getElementById("print-briefing-button")
             infoCard("Menstrual cycle status", details["menstrual-status"],
                 C.purple, C.purpleLight, C.purpleBorder);
 
-            infoCard("Last menstrual period", details["last-period"],
+            infoCard("Last menstrual period", formatDate(details["last-period"], true),
                 C.purple, C.purpleLight, C.purpleBorder);
 
             infoCard("Typical cycle length",
@@ -1124,7 +1206,7 @@ document.getElementById("print-briefing-button")
                 C.purple, C.purpleLight, C.purpleBorder);
 
             // 4. MEDICATION AND TREATMENT
-            section("4. Medication & Treatment", C.blue, C.blueLight);
+            section("4. Medication & Treatment", C.blue, C.blueLight, 70);
 
             infoCard("Hormonal medication or contraception",
                 details["hormonal-treatment"],
@@ -1135,27 +1217,25 @@ document.getElementById("print-briefing-button")
                 C.blue, C.blueLight, [219, 231, 249]);
 
             // 5. RELEVANT MEDICAL HISTORY
-            section("5. Relevant Medical History", C.green, C.greenLight);
+            section("5. Relevant Medical History", C.green, C.greenLight, 40);
 
             infoCard("Relevant medical history",
                 details["medical-history"],
                 C.greenDark, C.greenLight, C.greenBorder);
 
             // 6. IMPACT ON DAILY LIFE
-            section("6. Impact on Daily Life", C.pink, C.pinkLight);
+            section("6. Impact on Daily Life", C.pink, C.pinkLight, 40);
 
             infoCard("Areas affected", impact,
                 [177, 83, 105], C.pinkLight, C.pinkBorder);
 
             // 7. DOCTOR DISCUSSION POINTS
-            section("7. Points to Discuss With Your Doctor", C.purple, C.purpleLight);
+            section("7. Points to Discuss With Your Doctor", C.purple, C.purpleLight, 60);
 
             const discussionPoints = [
-                "Discuss the reported symptoms and their possible causes.",
-                "Discuss whether further assessment or investigations are appropriate.",
+                "Discuss the reported symptoms and possible next steps.",
                 "Review current medication, hormonal treatment and relevant medical history.",
-                "Discuss suitable management options, including their potential benefits and risks.",
-                "Agree on appropriate follow-up and monitoring."
+                "Agree on appropriate follow-up."
             ];
 
             const pointColors = [
@@ -1267,6 +1347,8 @@ document.getElementById("print-briefing-button")
 
             doc.save("MenoBrief-Clinical-Briefing-" + date + ".pdf");
 
+            isDirty = false;
+
             console.log("MenoBrief homepage-inspired PDF generated successfully.");
 
         } catch (error) {
@@ -1290,6 +1372,14 @@ document.getElementById("print-briefing-button")
             generateBriefing();
             showStep(4);
         });
+
+    // Warn before leaving with unsaved data
+    window.addEventListener("beforeunload", (event) => {
+        if (isDirty) {
+            event.preventDefault();
+            event.returnValue = "";
+        }
+    });
 
     updateNarrative();
     showStep(1);
