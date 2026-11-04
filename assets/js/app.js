@@ -453,7 +453,7 @@ function clearFeedback(element) {
         const parts = [];
 
         const ageRange = details["age-range"];
-        if (ageRange) parts.push("Patient aged " + ageRange);
+        if (ageRange) parts.push("Patient aged " + String(ageRange).replace(/-/g, "–"));
 
         const menstrualStatus = details["menstrual-status"];
         if (menstrualStatus) parts.push("reporting " + String(menstrualStatus).toLowerCase());
@@ -710,6 +710,7 @@ document.getElementById("print-briefing-button")
                 pink: [233, 138, 155],
                 pinkLight: [252, 236, 241],
                 pinkBorder: [245, 218, 226],
+                pinkDark: [190, 55, 90],
                 purple: [128, 102, 201],
                 purpleLight: [248, 243, 252],
                 purpleBorder: [234, 225, 242],
@@ -752,7 +753,7 @@ document.getElementById("print-briefing-button")
             }
 
             function ensureSpace(height) {
-                if (y + height > FOOTER_LIMIT) {
+                if (y + height > FOOTER_LIMIT && y > 19) {
                     newPage();
                 }
             }
@@ -874,33 +875,39 @@ document.getElementById("print-briefing-button")
                     const green = await loadImage(greenData);
                     const lotus = await loadImage(lotusData);
 
-                    // Pale pink botanical decoration: upper-right.
+                    const STRIP_W = 76; // outer strip width, ~13mm
+
+                    // Pale pink botanical decoration: upper-right strip.
                     if (pink) {
                         ctx.save();
                         ctx.globalAlpha = 0.35;
-                        ctx.drawImage(pink, 825, -35, 415, 519);
+                        const h = STRIP_W * (519 / 415); // ~95px, aspect preserved
+                        ctx.drawImage(pink, 1240 - STRIP_W, 20, STRIP_W, h);
                         ctx.restore();
                     }
 
-                    // Soft green botanical decoration: lower-left.
+                    // Soft green botanical decoration: lower-left strip.
                     if (green) {
                         ctx.save();
                         ctx.globalAlpha = 0.32;
-                        ctx.drawImage(green, -45, 1210, 430, 537);
+                        const h = STRIP_W * (537 / 430); // ~95px, aspect preserved
+                        ctx.drawImage(green, 0, 1754 - h - 20, STRIP_W, h);
                         ctx.restore();
                     }
 
-                    // Large faded MenoBrief lotus: lower-right.
+                    // Large faded MenoBrief lotus: lower-right strip.
                     if (lotus) {
                         ctx.save();
                         ctx.globalAlpha = 0.18;
-                        ctx.drawImage(lotus, 965, 1430, 245, 196);
+                        const hLarge = STRIP_W * (196 / 245); // ~61px, aspect preserved
+                        ctx.drawImage(lotus, 1240 - STRIP_W, 1754 - hLarge - 20, STRIP_W, hLarge);
                         ctx.restore();
 
-                        // Smaller lotus accent near the upper-left edge.
+                        // Smaller lotus accent near the upper-left strip.
                         ctx.save();
                         ctx.globalAlpha = 0.12;
-                        ctx.drawImage(lotus, 15, 365, 165, 132);
+                        const hSmall = STRIP_W * (132 / 165); // ~61px, aspect preserved
+                        ctx.drawImage(lotus, 0, 400, STRIP_W, hSmall);
                         ctx.restore();
                     }
 
@@ -958,7 +965,7 @@ document.getElementById("print-briefing-button")
                 align: "center"
             });
 
-            y += 30;
+            y += 36;
 
             // DOCUMENT TITLE
             doc.setFont("helvetica", "bold");
@@ -984,8 +991,8 @@ document.getElementById("print-briefing-button")
             });
 
             // SECTION HEADING
-            function section(title, color, pale, contentHeight) {
-                ensureSpace(18 + (contentHeight || 0));
+            function section(title, color, pale) {
+                ensureSpace(50);
                 y += 3;
 
                 doc.setFillColor(...pale);
@@ -1019,76 +1026,136 @@ document.getElementById("print-briefing-button")
                     CW - 12
                 );
 
-                const cardHeight = Math.max(15, 8 + lines.length * 4.2);
-
-                ensureSpace(cardHeight + 3);
-
-                doc.setFillColor(...C.white);
-                doc.setDrawColor(...border);
-                doc.roundedRect(
-                    M, y - 3, CW, cardHeight, 2.5, 2.5, "FD"
-                );
-
-                doc.setFillColor(...pale);
-                doc.roundedRect(M, y - 3, 2, cardHeight, 1, 1, "F");
-
-                doc.setFont("helvetica", "bold");
-                doc.setFontSize(8);
-                doc.setTextColor(...accent);
-                doc.text(String(label), M + 7, y + 2.5);
-
-                doc.setFont("helvetica", "normal");
-                doc.setFontSize(9.2);
-                doc.setTextColor(...C.text);
-                doc.text(lines, M + 7, y + 8);
-
-                y += cardHeight + 2;
-            }
-
-            // PERSONAL NARRATIVE CARD
-            function narrativeCard(value) {
-                const content = String(value || "");
-                const fontSize = 9.5;
-                const lineHeight = 4.8;
-
-                doc.setFont("helvetica", "normal");
-                doc.setFontSize(fontSize);
-
-                const lines = doc.splitTextToSize(content, CW - 14);
                 let index = 0;
 
                 while (index < lines.length) {
-                    const available = FOOTER_LIMIT - y - 10;
-                    const count = Math.max(
-                        1,
-                        Math.floor((available - 12) / lineHeight)
-                    );
+        // Available card height, including a 1 mm safety margin.
+        const availableHeight = FOOTER_LIMIT - y - 1;
 
-                    const chunk = lines.slice(index, index + count);
-                    const cardHeight = chunk.length * lineHeight + 12;
+        // A card needs at least 15 mm of height.
+        if (availableHeight < 15) {
+            newPage();
+            continue;
+        }
 
-                    ensureSpace(cardHeight + 3);
+        // Calculate how many complete text lines fit.
+        // Reserve 11mm for label + first-value offset so the final text line
+        // keeps ~4.2mm clearance from the card bottom border.
+        const maxLines = Math.floor(
+            (availableHeight - 11) / 4.2
+        );
 
-                    doc.setFillColor(...C.white);
-                    doc.setDrawColor(...C.purpleBorder);
-                    doc.roundedRect(
-                        M, y - 3, CW, cardHeight, 2.5, 2.5, "FD"
-                    );
+        if (maxLines < 1) {
+            newPage();
+            continue;
+        }
 
-                    doc.setFillColor(...C.purpleLight);
-                    doc.roundedRect(M, y - 3, 2, cardHeight, 1, 1, "F");
+        const chunk = lines.slice(index, index + maxLines);
 
-                    doc.setFont("helvetica", "normal");
-                    doc.setFontSize(fontSize);
-                    doc.setTextColor(...C.text);
-                    doc.text(chunk, M + 7, y + 4);
+        const cardHeight = Math.max(
+            15,
+            11 + chunk.length * 4.2
+        );
 
-                y += cardHeight + 3;
-                    index += chunk.length;
-                }
-            }
+        // Card background.
+        doc.setFillColor(...C.white);
+        doc.setDrawColor(...border);
+        doc.roundedRect(
+            M, y - 3, CW, cardHeight, 2.5, 2.5, "FD"
+        );
 
-            // COLOURFUL SYMPTOM CHIPS
+        // Coloured left accent.
+        doc.setFillColor(...pale);
+        doc.roundedRect(
+            M, y - 3, 2, cardHeight, 1, 1, "F"
+        );
+
+        // Field label.
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8);
+        doc.setTextColor(...accent);
+
+        const cardLabel = index === 0
+            ? String(label)
+            : String(label) + " (continued)";
+
+        doc.text(cardLabel, M + 7, y + 2.5);
+
+        // Field value.
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9.2);
+        doc.setTextColor(...C.text);
+
+        let currentY = y + 8;
+
+        chunk.forEach(line => {
+            doc.text(line, M + 7, currentY);
+            currentY += 4.2;
+        });
+
+        y += cardHeight + 2;
+        index += chunk.length;
+    }
+}
+
+            
+// PERSONAL NARRATIVE CARD
+function narrativeCard(value) {
+    const content = String(value || "");
+    const fontSize = 9.5;
+    const lineHeight = 4.8;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(fontSize);
+
+    const lines = doc.splitTextToSize(content, CW - 14);
+    let index = 0;
+
+    while (index < lines.length) {
+        ensureSpace(lineHeight + 12);
+
+        const available = FOOTER_LIMIT - y - 10;
+
+        if (available < lineHeight + 12) {
+            newPage();
+            continue;
+        }
+
+        const count = Math.max(
+            1,
+            Math.floor((available - 12) / lineHeight)
+        );
+
+        const chunk = lines.slice(index, index + count);
+        const cardHeight = chunk.length * lineHeight + 12;
+
+        doc.setFillColor(...C.white);
+        doc.setDrawColor(...C.purpleBorder);
+        doc.roundedRect(
+            M, y - 3, CW, cardHeight, 2.5, 2.5, "FD"
+        );
+
+        doc.setFillColor(...C.purpleLight);
+        doc.roundedRect(
+            M, y - 3, 2, cardHeight, 1, 1, "F"
+        );
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(fontSize);
+        doc.setTextColor(...C.text);
+
+        let currentY = y + 4;
+
+        chunk.forEach(line => {
+            doc.text(line, M + 7, currentY);
+            currentY += lineHeight;
+        });
+
+        y += cardHeight + 3;
+        index += chunk.length;
+    }
+}
+// COLOURFUL SYMPTOM CHIPS
             function symptomChips(items) {
                 if (!Array.isArray(items) || !items.length) {
                     infoCard(
@@ -1173,24 +1240,31 @@ document.getElementById("print-briefing-button")
             }
 
             // 1. CLINICAL SUMMARY
-            section("1. Clinical Summary", C.purple, C.purpleLight, 100);
+            section("1. Clinical Summary", C.purple, C.purpleLight);
 
             const summaryResult = buildClinicalSummary();
             narrativeCard(summaryResult.summary);
 
             if (summaryResult.patientWords) {
-                section("In the patient's words", C.purple, C.purpleLight, 40);
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(9);
+                doc.setTextColor(...C.purple);
+                ensureSpace(14);
+                doc.text("In the patient's words", M, y);
+                y += 7;
                 narrativeCard(summaryResult.patientWords);
             }
 
             // 2. REPORTED SYMPTOMS
-            section("2. Reported Symptoms", C.green, C.greenLight, 50);
+            section("2. Reported Symptoms", C.green, C.greenLight);
             symptomChips(symptoms);
 
             // 3. PERSONAL AND MENSTRUAL HISTORY
-            section("3. Personal & Menstrual History", C.purple, C.purpleLight, 120);
+            section("3. Personal & Menstrual History", C.purple, C.purpleLight);
 
-            infoCard("Age range", details["age-range"],
+            const ageRange = details["age-range"];
+            infoCard("Age range",
+                ageRange ? String(ageRange).replace(/-/g, "–") : ageRange,
                 C.purple, C.purpleLight, C.purpleBorder);
 
             infoCard("Menstrual cycle status", details["menstrual-status"],
@@ -1206,31 +1280,37 @@ document.getElementById("print-briefing-button")
                 C.purple, C.purpleLight, C.purpleBorder);
 
             // 4. MEDICATION AND TREATMENT
-            section("4. Medication & Treatment", C.blue, C.blueLight, 70);
+            section("4. Medication & Treatment", C.blue, C.blueLight);
 
             infoCard("Hormonal medication or contraception",
                 details["hormonal-treatment"],
                 C.blue, C.blueLight, [219, 231, 249]);
 
-            infoCard("Medication or treatment details",
-                details["medication-details"],
-                C.blue, C.blueLight, [219, 231, 249]);
+            const hormonal = details["hormonal-treatment"];
+            const medicationDetails = details["medication-details"];
+
+            if (!(hormonal === "No" &&
+                  (!medicationDetails || String(medicationDetails).trim() === ""))) {
+                infoCard("Medication or treatment details",
+                    medicationDetails,
+                    C.blue, C.blueLight, [219, 231, 249]);
+            }
 
             // 5. RELEVANT MEDICAL HISTORY
-            section("5. Relevant Medical History", C.green, C.greenLight, 40);
+            section("5. Relevant Medical History", C.green, C.greenLight);
 
             infoCard("Relevant medical history",
                 details["medical-history"],
                 C.greenDark, C.greenLight, C.greenBorder);
 
             // 6. IMPACT ON DAILY LIFE
-            section("6. Impact on Daily Life", C.pink, C.pinkLight, 40);
+            section("6. Impact on Daily Life", C.pinkDark, C.pinkLight);
 
             infoCard("Areas affected", impact,
                 [177, 83, 105], C.pinkLight, C.pinkBorder);
 
             // 7. DOCTOR DISCUSSION POINTS
-            section("7. Points to Discuss With Your Doctor", C.purple, C.purpleLight, 60);
+            section("7. Points to Discuss With Your Doctor", C.purple, C.purpleLight);
 
             const discussionPoints = [
                 "Discuss the reported symptoms and possible next steps.",
@@ -1261,34 +1341,41 @@ document.getElementById("print-briefing-button")
                     M, y - 3, CW, cardHeight, 2.5, 2.5, "FD"
                 );
 
-                doc.setFillColor(...pointColors[index]);
+                // Use a visible border colour for the third circle instead of
+                // the extremely pale C.purpleLight fill.
+                const circleFill = (index === 2) ? C.purpleBorder : pointColors[index];
+                doc.setFillColor(...circleFill);
                 doc.circle(M + 8, y + 4, 4, "F");
 
                 doc.setFont("helvetica", "bold");
                 doc.setFontSize(8);
-                doc.setTextColor(...C.greenDark);
-                doc.text(String(index + 1), M + 8, y + 6.7, {
+                doc.setTextColor(...C.text);
+                doc.text(String(index + 1), M + 10, y + 5, {
                     align: "center"
                 });
 
                 doc.setFont("helvetica", "normal");
                 doc.setFontSize(8.8);
                 doc.setTextColor(...C.text);
-                doc.text(lines, M + 16, y + 3);
+                // Baseline shifted so text visual centre aligns with circle centre (y+4).
+                doc.text(lines, M + 16, y + 4.5);
 
                 y += cardHeight + 3;
             });
 
             // DISCLAIMER
-            ensureSpace(32);
+            const disclaimerText = "This briefing organises information provided by the user. It is not a diagnosis, clinical assessment or treatment recommendation. All symptoms and treatment decisions should be discussed with a qualified healthcare professional.";
+            const disclaimerLines = doc.splitTextToSize(disclaimerText, CW - 14);
+            const disclaimerCardHeight = Math.max(26, 18 + disclaimerLines.length * 4);
+            ensureSpace(disclaimerCardHeight + 3);
             y += 3;
 
             doc.setFillColor(...C.purpleLight);
             doc.setDrawColor(...C.purpleBorder);
-            doc.roundedRect(M, y, CW, 26, 2.5, 2.5, "FD");
+            doc.roundedRect(M, y, CW, disclaimerCardHeight, 2.5, 2.5, "FD");
 
             doc.setFillColor(...C.pink);
-            doc.roundedRect(M, y, 2, 26, 1, 1, "F");
+            doc.roundedRect(M, y, 2, disclaimerCardHeight, 1, 1, "F");
 
             doc.setFont("helvetica", "bold");
             doc.setFontSize(8.5);
@@ -1299,12 +1386,11 @@ document.getElementById("print-briefing-button")
             doc.setFontSize(7.8);
             doc.setTextColor(...C.secondary);
 
-            const disclaimer = doc.splitTextToSize(
-                "This briefing organises information provided by the user. It is not a diagnosis, clinical assessment or treatment recommendation. All symptoms and treatment decisions should be discussed with a qualified healthcare professional.",
-                CW - 14
-            );
-
-            doc.text(disclaimer, M + 7, y + 12);
+            let disclaimerY = y + 12;
+            disclaimerLines.forEach(line => {
+                doc.text(line, M + 7, disclaimerY);
+                disclaimerY += 4;
+            });
 
             // FOOTER AND PAGE NUMBERS
             const totalPages = doc.internal.getNumberOfPages();
@@ -1323,7 +1409,7 @@ document.getElementById("print-briefing-button")
 
                 doc.setFont("helvetica", "normal");
                 doc.setFontSize(7.5);
-                doc.setTextColor(...C.muted);
+                doc.setTextColor(...C.secondary);
                 doc.text(
                     "Menopause Clinical Briefing Tool",
                     M + 20,
@@ -1345,7 +1431,7 @@ document.getElementById("print-briefing-button")
                 String(now.getDate()).padStart(2, "0")
             ].join("-");
 
-            doc.save("MenoBrief-Clinical-Briefing-" + date + ".pdf");
+            doc.save("MenoBrief-Clinical-Appointment-Summary-" + date + ".pdf");
 
             isDirty = false;
 
