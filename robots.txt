@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://menobrief.pages.dev/sitemap.xml
