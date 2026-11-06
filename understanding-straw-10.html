@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Understanding the STRAW+10 reproductive ageing framework: its stages, how it works, its limitations, and that MenoBrief does not calculate or assign a STRAW+10 stage.">
+    <link rel="canonical" href="https://menobrief.pages.dev/understanding-straw-10">
+
+    <title>Understanding the STRAW+10 Framework | MenoBrief</title>
+
+    <!-- Icons -->
+    <script src="assets/js/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="assets/css/print.css">
+
+    <!-- GEO/AEO: Structured data for answer engines (JSON-LD). Public information only; no patient data, no external requests. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://menobrief.pages.dev/#organization",
+      "name": "MenoBrief",
+      "url": "https://menobrief.pages.dev/",
+      "logo": "https://menobrief.pages.dev/assets/images/lotus.svg",
+      "description": "MenoBrief is a free, client-only menopause and perimenopause appointment preparation tool.",
+      "foundingDate": "2026",
+      "sameAs": [
+        "https://github.com/virendrahardikrviru-commits/menobrief"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://menobrief.pages.dev/understanding-straw-10#webpage",
+      "name": "Understanding the STRAW+10 Framework – MenoBrief",
+      "url": "https://menobrief.pages.dev/understanding-straw-10",
+      "description": "Understanding the STRAW+10 reproductive ageing framework: its stages, how it works, its limitations, and that MenoBrief does not calculate or assign a STRAW+10 stage.",
+      "isPartOf": { "@id": "https://menobrief.pages.dev/#organization" },
+      "author": { "@id": "https://menobrief.pages.dev/#organization" },
+      "publisher": { "@id": "https://menobrief.pages.dev/#organization" },
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "inLanguage": "en-GB",
+      "about": { "@id": "https://menobrief.pages.dev/#menopause" },
+      "breadcrumb": { "@id": "https://menobrief.pages.dev/understanding-straw-10#breadcrumb" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://menobrief.pages.dev/understanding-straw-10#article",
+      "name": "Understanding the STRAW+10 Reproductive Ageing Framework",
+      "url": "https://menobrief.pages.dev/understanding-straw-10",
+      "description": "An overview of the STRAW+10 staging system for reproductive ageing, its broad stages and limitations, and that MenoBrief does not calculate or assign a STRAW+10 stage.",
+      "author": { "@id": "https://menobrief.pages.dev/#organization" },
+      "publisher": { "@id": "https://menobrief.pages.dev/#organization" },
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "inLanguage": "en-GB",
+      "isPartOf": { "@id": "https://menobrief.pages.dev/#organization" },
+      "about": { "@id": "https://menobrief.pages.dev/#menopause" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": "https://menobrief.pages.dev/understanding-straw-10#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://menobrief.pages.dev/" },
+        { "@type": "ListItem", "position": 2, "name": "STRAW+10 guide", "item": "https://menobrief.pages.dev/understanding-straw-10" }
+      ]
+    }
+    </script>
+
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- HEADER -->
+        <header class="topbar" aria-label="Site header">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <img src="assets/images/lotus.svg" alt="MenoBrief lotus logo">
+                </span>
+
+                <span class="brand-text">
+                    <strong>MenoBrief</strong>
+                    <small>Menopause Clinical Briefing Tool</small>
+                </span>
+            </a>
+
+            <span class="opensource-badge">
+                <i data-lucide="github"></i>
+                Free Tool
+            </span>
+
+            <nav class="top-navigation">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy & Safety</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
+
+</header>
+
+        <!-- MAIN LAYOUT -->
+        <div class="dashboard-layout">
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="sidebar">
+
+                <nav class="sidebar-navigation" aria-label="Main navigation">
+
+                    <a href="index.html" class="sidebar-link">
+                        <i data-lucide="house"></i>
+                        <span>Create Briefing</span>
+                    </a>
+
+                    <a href="index.html#how-it-works" class="sidebar-link">
+                        <i data-lucide="circle-help"></i>
+                        <span>How It Works</span>
+                    </a>
+
+                    <a href="index.html#straw" class="sidebar-link">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>About STRAW+10</span>
+                    </a>
+
+                    <a href="privacy.html" class="sidebar-link">
+                        <i data-lucide="shield-check"></i>
+                        <span>Privacy &amp; Safety</span>
+                    </a>
+
+                    <a href="faq.html" class="sidebar-link">
+                        <i data-lucide="help-circle"></i>
+                        <span>FAQ</span>
+                    </a>
+
+                    <a href="https://github.com/virendrahardikrviru-commits/menobrief" target="_blank"
+                       rel="noopener noreferrer" class="sidebar-link">
+                        <i data-lucide="github"></i>
+                        <span>Contribute on GitHub</span>
+                    </a>
+
+                </nav>
+
+                <div class="sidebar-feature">
+
+                    <i data-lucide="sparkles"></i>
+
+                    <h3>Your Clinical Briefing, Clearly Organised</h3>
+
+                    <p>
+                        Turns your real-life experience into
+                        an objective, doctor-friendly briefing.
+                    </p>
+
+                </div>
+
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content" id="straw-guide" aria-label="Main content">
+
+                <div class="workspace">
+
+                    <section class="hero-section" style="min-height: auto; padding: 22px 30px 18px;">
+
+                        <div class="hero-content">
+
+                            <span class="eyebrow">STRAW+10 GUIDE</span>
+
+                            <h1>Understanding the STRAW+10 Framework</h1>
+
+                            <p class="hero-description">
+                                What the STRAW+10 reproductive ageing framework is, its broad stages
+                                and limitations, and why MenoBrief does not calculate or assign a
+                                STRAW+10 stage.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                    <!-- WHAT IS STRAW+10 -->
+                    <div class="review-section">
+                        <h3>What is STRAW+10?</h3>
+                        <p>
+                            STRAW+10 stands for the Stages of Reproductive Aging Workshop + 10. It is
+                            an internationally recognised framework for describing the stages of
+                            reproductive ageing, including the transition through perimenopause and
+                            menopause. It was published in 2012 as an update to the original 2001
+                            STRAW staging system.
+                        </p>
+                        <p>
+                            STRAW+10 provides a standardised way to classify reproductive ageing from
+                            the late reproductive years through the menopausal transition into
+                            postmenopause. It is used in research and clinical contexts to improve
+                            consistency when discussing ovarian status.
+                        </p>
+                    </div>
+
+                    <!-- BROAD STAGES -->
+                    <div class="review-section">
+                        <h3>The broad stages</h3>
+                        <p>
+                            STRAW+10 centres on the final menstrual period (FMP), which is Stage 0.
+                            The stages are grouped into three broad phases:
+                        </p>
+                        <ul>
+                            <li><strong>Reproductive phase:</strong> Stages –5 (early), –4 (peak) and –3 (late), leading up to the final menstrual period.</li>
+                            <li><strong>Menopausal transition:</strong> Stage –2 (early transition) and Stage –1 (late transition).</li>
+                            <li><strong>Postmenopause:</strong> Stage +1 (early postmenopause) and Stage +2 (late postmenopause).</li>
+                        </ul>
+                        <p>
+                            Perimenopause is a general term still in common use. In STRAW+10 terms it
+                            broadly covers the menopausal transition (Stages –2 and –1) and ends
+                            12 months after the final menstrual period.
+                        </p>
+                    </div>
+
+                    <!-- HOW IT WORKS -->
+                    <div class="review-section">
+                        <h3>How staging works</h3>
+                        <p>
+                            STRAW+10 uses menstrual cycle bleeding criteria as the most important
+                            basis for staging. Supportive biomarkers (such as FSH, AMH and antral
+                            follicle count) may be used where helpful but are not required, because
+                            assays are not standardised across laboratories.
+                        </p>
+                        <p>
+                            Examples of the menstrual criteria include:
+                        </p>
+                        <ul>
+                            <li>Stage –2 (early transition): a persistent difference of 7 or more days in the length of consecutive menstrual cycles;</li>
+                            <li>Stage –1 (late transition): skipped cycles or absence of periods (amenorrhea) of 60 days or longer;</li>
+                            <li>Stage +1a: 12 months after the final menstrual period.</li>
+                        </ul>
+                        <p>
+                            STRAW+10 does not use age as a criterion for staging, and it is intended
+                            to apply regardless of age, ethnicity, body size or lifestyle
+                            characteristics.
+                        </p>
+                    </div>
+
+                    <!-- LIMITATIONS -->
+                    <div class="review-section">
+                        <h3>Limitations</h3>
+                        <p>
+                            STRAW+10 is a research and clinical classification framework, not a
+                            diagnostic test. Important limitations include:
+                        </p>
+                        <ul>
+                            <li>It does not diagnose menopause or perimenopause on its own;</li>
+                            <li>People who have had a hysterectomy or endometrial ablation cannot be staged by menstrual bleeding criteria;</li>
+                            <li>People under 40 with suspected premature ovarian insufficiency (POI) do not fit the model easily;</li>
+                            <li>Symptoms are subjective, are not experienced by everyone, and there is no universal menopausal syndrome across all ethnic groups;</li>
+                            <li>Important knowledge gaps remain, particularly for low-resource settings and some health conditions.</li>
+                        </ul>
+                        <p>
+                            Staging should be interpreted by a qualified healthcare professional in
+                            the context of your overall health.
+                        </p>
+                    </div>
+
+                    <!-- MENOBRIEF DOES NOT ASSIGN STAGE -->
+                    <div class="review-section">
+                        <h3>MenoBrief does not assign a STRAW+10 stage</h3>
+                        <p>
+                            MenoBrief is an appointment preparation and communication tool. It
+                            organises the symptoms, history and concerns you enter into a briefing
+                            PDF to support a conversation with a healthcare professional.
+                        </p>
+                        <p>
+                            <strong>MenoBrief does not calculate, determine or assign a STRAW+10
+                            stage.</strong> It does not perform clinical staging or diagnosis. Any
+                            assessment of reproductive stage should be made by a qualified
+                            healthcare professional based on your individual circumstances.
+                        </p>
+                    </div>
+
+                    <!-- REFERENCES -->
+                    <div class="review-section">
+                        <h3>References</h3>
+                        <p>
+                            This page draws on the following public health resources:
+                        </p>
+                        <ul>
+                            <li>
+                                Harlow SD, Gass M, Hall JE, et al. Executive summary of the Stages of
+                                Reproductive Aging Workshop + 10. <em>Menopause</em>. 2012;19(4):387–395.
+                                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3340903/" target="_blank" rel="noopener noreferrer">STRAW+10 (PMC3340903) →</a>
+                            </li>
+                            <li>
+                                NICE. <em>Menopause: identification and management</em> (guideline NG23).
+                                Recommendations on identifying perimenopause and menopause.
+                                <a href="https://www.nice.org.uk/guidance/ng23/chapter/Recommendations" target="_blank" rel="noopener noreferrer">NICE NG23 recommendations →</a>
+                            </li>
+                            <li>
+                                NHS. <em>Menopause and perimenopause</em>. Overview of symptoms,
+                                treatment and self-care.
+                                <a href="https://www.nhs.uk/conditions/menopause-and-perimenopause/" target="_blank" rel="noopener noreferrer">NHS menopause and perimenopause →</a>
+                            </li>
+                        </ul>
+                        <p class="small-note">
+                            External links open in a new tab. MenoBrief is not responsible for the
+                            content of external websites.
+                        </p>
+                    </div>
+
+                    <div class="form-actions briefing-actions">
+                        <a href="index.html" class="primary-button" id="back-to-menobrief">
+                            <i data-lucide="house"></i>
+                            Back to MenoBrief
+                        </a>
+                    </div>
+
+                </div>
+
+            </main>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="right-panel">
+
+                <!-- HOW IT WORKS -->
+                <article class="info-card lavender" id="how-it-works">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="play-circle"></i>
+                        <h3>How It Works</h3>
+                    </div>
+
+                    <div class="how-step">
+                        <span>1</span>
+                        <div>
+                            <strong>Describe your symptoms</strong>
+                            <p>Select what you're experiencing and tell your story.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-step">
+                        <span>2</span>
+                        <div>
+                            <strong>Your information is organised locally</strong>
+                            <p>Your responses are organised into a clear, doctor-friendly summary.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-step">
+                        <span>3</span>
+                        <div>
+                            <strong>Get your clinical briefing</strong>
+                            <p>Download a clear, doctor-friendly PDF.</p>
+                        </div>
+                    </div>
+
+                </article>
+
+                <!-- DISCLAIMER -->
+                <article class="info-card disclaimer" id="disclaimer">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Important Disclaimer</h3>
+                    </div>
+
+                    <p>
+                        MenoBrief is a menopause and perimenopause
+                        appointment preparation tool. It does not
+                        diagnose medical conditions or recommend
+                        treatments. Its clinical briefing is intended
+                        to support discussions with your healthcare
+                        professional, not replace medical advice,
+                        diagnosis or care.
+                    </p>
+
+                </article>
+
+                <!-- FAQ LINK -->
+                <article class="info-card lavender" id="faq-link">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="help-circle"></i>
+                        <h3>Frequently Asked Questions</h3>
+                    </div>
+
+                    <p>
+                        Visit the FAQ page for answers to common questions about MenoBrief,
+                        including STRAW+10 and menopause staging.
+                    </p>
+
+                    <a href="faq.html" class="primary-button">
+                        <i data-lucide="arrow-right"></i>
+                        Read all FAQs
+                    </a>
+
+                </article>
+
+            </aside>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer" aria-label="Site footer">
+
+            <p>
+                MenoBrief is dedicated to improving communication in women's health.
+            </p>
+
+            <strong>Free to use.</strong>
+
+            <button type="button" id="footer-share-button" class="footer-share-link"><i data-lucide="share-2"></i> Share MenoBrief</button>
+
+            <div class="publisher-info">
+                <p><strong>Publisher:</strong> MenoBrief — free menopause clinical briefing tool.</p>
+                <p><strong>Last reviewed:</strong> 7 November 2026 &nbsp;|&nbsp; <strong>Purpose:</strong> Appointment preparation support only; not a diagnostic or treatment tool.</p>
+                <p><strong>Privacy:</strong> All patient information is processed locally in your browser and is never sent to a server or AI service.</p>
+            </div>
+
+        </footer>
+
+    </div>
+
+</body>
+</html>

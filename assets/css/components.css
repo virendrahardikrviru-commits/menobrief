@@ -436,5 +436,145 @@
     }
 }
 
-/* END STEP 3 REVIEW STYLES */
+/* =========================
+   BREADCRUMB (GEO/AEO)
+========================= */
+
+.breadcrumb {
+    margin: 0 16px 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item a {
+    color: var(--brand-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item span {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* =========================
+   FAQ LIST (GEO/AEO)
+========================= */
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-list details {
+    border: 1px solid #E8EAED;
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #FFFFFF;
+}
+
+.faq-list summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    color: #172033;
+    outline: none;
+    list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::marker {
+    display: none;
+}
+
+.faq-list p {
+    margin: 6px 0 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #334155;
+}
+
+.faq-list details[open] summary {
+    margin-bottom: 6px;
+    border-bottom: 1px solid #EEF0F2;
+    padding-bottom: 6px;
+}
+
+/* =========================
+   PUBLISHER INFO (GEO/AEO)
+========================= */
+
+.publisher-info {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.publisher-info p {
+    margin: 4px 0;
+}
+
+/* END GEO/AEO STYLES */
+
+/* =========================
+   LEARN MORE (GEO/AEO)
+========================= */
+
+.learn-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.learn-list li {
+    margin: 0;
+}
+
+.learn-list a {
+    display: block;
+    padding: 8px 10px;
+    border: 1px solid #E8EAED;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #172033;
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.learn-list a:hover {
+    background: #F0F8F3;
+    color: #08795B;
+    border-color: #B8DCCB;
+}
 

@@ -19,6 +19,7 @@
     .hero-section,
     .form-actions,
     .step-progress,
+    .breadcrumb,
     .ai-option,
     .ai-privacy-note {
         display: none !important;

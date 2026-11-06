@@ -22,6 +22,67 @@
     <link rel="stylesheet" href="assets/css/forms.css">
     <link rel="stylesheet" href="assets/css/print.css">
 
+    <!-- GEO/AEO: Structured data for answer engines (JSON-LD). Public information only; no patient data, no external requests. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://menobrief.pages.dev/#organization",
+      "name": "MenoBrief",
+      "url": "https://menobrief.pages.dev/",
+      "logo": "https://menobrief.pages.dev/assets/images/lotus.svg",
+      "description": "MenoBrief is a free, client-only menopause and perimenopause appointment preparation tool.",
+      "foundingDate": "2026",
+      "sameAs": [
+        "https://github.com/virendrahardikrviru-commits/menobrief"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://menobrief.pages.dev/faq#webpage",
+      "name": "Frequently Asked Questions – MenoBrief",
+      "url": "https://menobrief.pages.dev/faq",
+      "description": "Find answers to common questions about MenoBrief, a free menopause clinical briefing tool.",
+      "isPartOf": { "@id": "https://menobrief.pages.dev/#organization" },
+      "author": { "@id": "https://menobrief.pages.dev/#organization" },
+      "publisher": { "@id": "https://menobrief.pages.dev/#organization" },
+      "datePublished": "2026-11-01",
+      "dateModified": "2026-11-07",
+      "inLanguage": "en-GB"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://menobrief.pages.dev/faq#faqpage",
+      "name": "MenoBrief Frequently Asked Questions",
+      "url": "https://menobrief.pages.dev/faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is MenoBrief free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. MenoBrief is free to use. No account or payment is required." } },
+        { "@type": "Question", "name": "Do I need an account?", "acceptedAnswer": { "@type": "Answer", "text": "No. You can use the application without registration." } },
+        { "@type": "Question", "name": "Is my health information uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "No. The application processes the information locally in your browser; it does not send patient information to a MenoBrief backend." } },
+        { "@type": "Question", "name": "What happens when I refresh or close the page?", "acceptedAnswer": { "@type": "Answer", "text": "Your temporary working information is cleared. You will need to enter it again if you want to create another briefing." } },
+        { "@type": "Question", "name": "How do I get my briefing?", "acceptedAnswer": { "@type": "Answer", "text": "Complete the four steps, review your information, and download the generated PDF." } },
+        { "@type": "Question", "name": "Can I use MenoBrief on a mobile phone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. MenoBrief works in a mobile browser and the layout adjusts to smaller screens. You can also install it as a progressive web app (PWA) on supported devices." } },
+        { "@type": "Question", "name": "Can I review my PDF before downloading?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Step 4 shows your structured clinical briefing on screen before you generate and download the PDF." } },
+        { "@type": "Question", "name": "Does MenoBrief diagnose menopause?", "acceptedAnswer": { "@type": "Answer", "text": "No. MenoBrief is an appointment preparation and communication tool, not a diagnostic or treatment tool. Always consult a qualified healthcare professional for medical advice." } },
+        { "@type": "Question", "name": "Does MenoBrief use AI?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no active AI integration. Information is organised locally using the application's existing logic." } },
+        { "@type": "Question", "name": "Where is my downloaded PDF stored?", "acceptedAnswer": { "@type": "Answer", "text": "It is saved through your browser's normal download process to your device. The exact location depends on your browser's download settings." } },
+        { "@type": "Question", "name": "Is perimenopause the same as menopause?", "acceptedAnswer": { "@type": "Answer", "text": "No. Perimenopause is the time leading up to menopause, when periods and hormone levels begin to change. Menopause is reached after 12 consecutive months without a period (not using hormonal contraception). Both are natural stages of reproductive ageing." } },
+        { "@type": "Question", "name": "How can I prepare for my medical appointment?", "acceptedAnswer": { "@type": "Answer", "text": "Track your symptoms, menstrual history and medications, and note questions to discuss. MenoBrief organises this into a doctor-friendly PDF briefing you can take to your appointment." } },
+        { "@type": "Question", "name": "Does MenoBrief determine my menopause stage?", "acceptedAnswer": { "@type": "Answer", "text": "No. MenoBrief does not calculate or assign a menopause or STRAW+10 stage. It is an appointment preparation tool only; any staging or diagnosis should be made by a qualified healthcare professional." } },
+        { "@type": "Question", "name": "Does MenoBrief use the STRAW+10 framework?", "acceptedAnswer": { "@type": "Answer", "text": "MenoBrief references STRAW+10 for educational purposes only. It does not calculate, determine or assign a STRAW+10 stage." } },
+        { "@type": "Question", "name": "Can I track my symptoms with MenoBrief?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Step 1 lets you select symptoms and describe your experience in your own words. For ongoing tracking, keep a symptom diary and bring it to your appointment." } }
+      ]
+    }
+    </script>
+
 </head>
 
 <body>
@@ -120,7 +181,7 @@
 
                         <details>
                             <summary>Is MenoBrief free?</summary>
-                            <p>Yes. MenoBrief is free to use.</p>
+                            <p>Yes. MenoBrief is free to use. No account or payment is required.</p>
                         </details>
 
                         <details>
@@ -131,7 +192,8 @@
                         <details>
                             <summary>Is my health information uploaded?</summary>
                             <p>No. The application processes the information locally in your browser;
-                            it does not send patient information to a MenoBrief backend.</p>
+                            it does not send patient information to a MenoBrief backend, server,
+                            AI service or third party.</p>
                         </details>
 
                         <details>
@@ -142,7 +204,20 @@
 
                         <details>
                             <summary>How do I get my briefing?</summary>
-                            <p>Complete the four steps, review your information, and download the generated PDF.</p>
+                            <p>Complete the four steps, review your information, and download the generated PDF.
+                            The PDF is created locally on your device.</p>
+                        </details>
+
+                        <details>
+                            <summary>Can I use MenoBrief on a mobile phone?</summary>
+                            <p>Yes. MenoBrief works in a mobile browser and the layout adjusts to smaller screens.
+                            You can also install it as a progressive web app (PWA) on supported devices.</p>
+                        </details>
+
+                        <details>
+                            <summary>Can I review my PDF before downloading?</summary>
+                            <p>Yes. Step 4 shows your structured clinical briefing on screen before you generate
+                            and download the PDF.</p>
                         </details>
 
                         <details>
@@ -161,6 +236,40 @@
                             <summary>Where is my downloaded PDF stored?</summary>
                             <p>It is saved through your browser's normal download process to your device. The exact
                             location depends on your browser's download settings.</p>
+                        </details>
+
+                        <details>
+                            <summary>Is perimenopause the same as menopause?</summary>
+                            <p>No. Perimenopause is the time leading up to menopause, when periods and hormone
+                            levels begin to change. Menopause is reached after 12 consecutive months without a
+                            period (not using hormonal contraception). Both are natural stages of reproductive
+                            ageing.</p>
+                        </details>
+
+                        <details>
+                            <summary>How can I prepare for my medical appointment?</summary>
+                            <p>Track your symptoms, menstrual history and medications, and note questions to
+                            discuss. MenoBrief organises this into a doctor-friendly PDF briefing you can take
+                            to your appointment.</p>
+                        </details>
+
+                        <details>
+                            <summary>Does MenoBrief determine my menopause stage?</summary>
+                            <p>No. MenoBrief does not calculate or assign a menopause or STRAW+10 stage. It is an
+                            appointment preparation tool only; any staging or diagnosis should be made by a
+                            qualified healthcare professional.</p>
+                        </details>
+
+                        <details>
+                            <summary>Does MenoBrief use the STRAW+10 framework?</summary>
+                            <p>MenoBrief references STRAW+10 for educational purposes only. It does not calculate,
+                            determine or assign a STRAW+10 stage.</p>
+                        </details>
+
+                        <details>
+                            <summary>Can I track my symptoms with MenoBrief?</summary>
+                            <p>Yes. Step 1 lets you select symptoms and describe your experience in your own
+                            words. For ongoing tracking, keep a symptom diary and bring it to your appointment.</p>
                         </details>
 
                     </div>
@@ -212,6 +321,22 @@
                         <i data-lucide="arrow-right"></i>
                         Privacy &amp; Safety
                     </a>
+
+                </article>
+
+                <!-- RELATED GUIDES -->
+                <article class="info-card green-card" id="related-guides">
+
+                    <div class="info-card-heading">
+                        <i data-lucide="book-open"></i>
+                        <h3>Related Guides</h3>
+                    </div>
+
+                    <ul class="learn-list">
+                        <li><a href="menopause-appointment-guide.html">Preparing for a menopause appointment</a></li>
+                        <li><a href="perimenopause-symptoms-guide.html">Understanding perimenopause and menopause symptoms</a></li>
+                        <li><a href="understanding-straw-10.html">Understanding the STRAW+10 framework</a></li>
+                    </ul>
 
                 </article>
 

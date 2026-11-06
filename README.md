@@ -17,6 +17,13 @@ MenoBrief is a free, client-only tool that helps women prepare structured menopa
 - Icons use a locally hosted copy of Lucide.
 - Fonts are self-hosted DM Sans and Playfair Display.
 
+## GEO / AEO (answer-engine optimization)
+
+- JSON-LD structured data (Schema.org) on every page: Organization, WebPage, BreadcrumbList, HowTo (the four-step workflow), FAQPage, and a MedicalCondition topic for menopause/perimenopause.
+- Semantic HTML landmarks, breadcrumb navigation, publisher/author information, and article dates.
+- A citable FAQ section on the homepage and full FAQ schema on the FAQ page.
+- All structured data is public information about the tool only. No patient data is included, and no external requests are made.
+
 ## Privacy
 
 - Patient information is held temporarily in browser memory only while you work on the page.
