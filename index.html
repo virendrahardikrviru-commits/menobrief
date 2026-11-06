@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +10,24 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="MenoBrief">
-    <meta name="description" content="MenoBrief is a free tool that helps women prepare structured menopause clinical briefings.">
 
-    <title>MenoBrief — Menopause Clinical Briefing Tool</title>
+    <title>Free Menopause Appointment Preparation Tool | MenoBrief</title>
+
+    <meta name="description" content="Preparing for a menopause or perimenopause appointment? Organise your symptoms, menstrual history and concerns into a clear PDF briefing for your doctor. Free and private.">
+
+    <link rel="canonical" href="https://menobrief.pages.dev/">
+    <!-- Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MenoBrief — Menopause Appointment Preparation">
+    <meta property="og:description" content="Organise your menopause and perimenopause experiences into a clear PDF briefing for your healthcare appointment.">
+    <meta property="og:url" content="https://menobrief.pages.dev/">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MenoBrief — Menopause Appointment Preparation">
+    <meta name="twitter:description" content="Prepare for your menopause appointment with a clear, structured symptom briefing.">
 
     <!-- Icons -->
     <script src="assets/js/vendor/lucide.min.js"></script>
@@ -37,7 +49,7 @@
         <!-- HEADER -->
         <header class="topbar">
 
-            <a href="#" class="brand">
+            <a href="#home" class="brand">
                 <span class="brand-icon">
     <img src="assets/images/lotus.svg" alt="MenoBrief lotus logo">
 </span>
@@ -115,10 +127,10 @@
                     <h3>Your Clinical Briefing, Clearly Organised</h3>
 
                     <p>
-                        Turns your real-life experience into
-                        an objective, doctor-friendly briefing.
+                        Organises your menopause symptoms, health history
+                        and personal experiences into a structured
+                        clinical briefing PDF for your healthcare appointment.
                     </p>
-
                 </div>
 
             </aside>
@@ -132,19 +144,25 @@
                     </span>
 
                     <h1>
-                        Make every minute of your appointment count.
+                        Make every minute of your menopause appointment count.
                     </h1>
 
                     <p class="hero-description">
-                        Answer a few questions, get a clear symptom summary
-                        to bring to your doctor. Free, private, nothing leaves
-                        your device.
+                        Preparing for a menopause or perimenopause appointment?
+                        Organise your symptoms, menstrual history and daily-life
+                        experiences into a clear clinical briefing PDF to discuss
+                        with your doctor. Free, private and easy to use.
                     </p>
 
                 </div>
 
-                <div class="hero-image" aria-label="A woman reflecting peacefully">
-                    <!-- Hero photograph is supplied by assets/images/hero-woman.jpg via CSS -->
+                <div class="hero-image">
+                    <img
+                        src="assets/images/hero-woman.jpg"
+                        alt="Woman reflecting peacefully, representing the menopause journey"
+                        loading="eager"
+                        fetchpriority="high"
+                    >
                 </div>
 
                 <div class="trust-indicators">
@@ -225,7 +243,7 @@
                      <div id="step-one-panel">
                     <div class="form-heading">
 
-                        <h2>Step 1: What have you been experiencing?</h2>
+                        <h2>Step 1: What menopause or perimenopause symptoms have you been experiencing?</h2>
 
                         <p>
                             Select all symptoms that apply.
@@ -412,7 +430,7 @@
 
                         <div class="form-heading">
                             <span class="section-eyebrow">YOUR PERSONAL CONTEXT</span>
-                            <h2>Step 2: Tell us a little more about yourself.</h2>
+                            <h2>Step 2: Tell us about your health and menstrual history</h2>
                             <p>
                                 These optional details help provide context for your
                                 clinical briefing. Only share what you're comfortable sharing.
@@ -601,7 +619,7 @@
 
                         <div class="form-heading">
                             <span class="section-eyebrow">FINAL INFORMATION CHECK</span>
-                            <h2>Step 3: Review Your Information</h2>
+                            <h2>Step 3: Review Your Menopause Symptom Information</h2>
                             <p>
                                 Please check the information below before proceeding
                                 to your clinical briefing.
@@ -681,7 +699,7 @@
 
                         <div class="section-intro">
                             <span class="eyebrow">YOUR CLINICAL BRIEFING</span>
-                            <h2>Step 4: Your Clinical Briefing</h2>
+                            <h2>Step 4: Your Menopause Appointment Briefing</h2>
                             <p>
                                 Your information has been organised into a structured
                                 summary to help you prepare for your healthcare appointment.
@@ -817,8 +835,9 @@
                     </div>
 
                     <p>
-                        An international framework for describing
-                        reproductive ageing, including perimenopause
+                        STRAW+10 is an internationally recognised framework
+                        for describing the stages of reproductive ageing,
+                        including the transition through perimenopause
                         and menopause.
                     </p>
 
@@ -836,10 +855,13 @@
                     </div>
 
                     <p>
-                        MenoBrief is an appointment preparation tool,
-                        not a diagnostic or treatment tool.
-                        Always consult a qualified healthcare
-                        professional for medical advice.
+                        MenoBrief is a menopause and perimenopause
+                        appointment preparation tool. It does not
+                        diagnose medical conditions or recommend
+                        treatments. Its clinical briefing is intended
+                        to support discussions with your healthcare
+                        professional, not replace medical advice,
+                        diagnosis or care.
                     </p>
 
                 </article>
