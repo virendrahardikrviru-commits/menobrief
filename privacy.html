@@ -22,6 +22,40 @@
     <link rel="stylesheet" href="assets/css/forms.css">
     <link rel="stylesheet" href="assets/css/print.css">
 
+    <!-- GEO/AEO: Structured data for answer engines (JSON-LD). Public information only; no patient data, no external requests. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://menobrief.pages.dev/#organization",
+      "name": "MenoBrief",
+      "url": "https://menobrief.pages.dev/",
+      "logo": "https://menobrief.pages.dev/assets/images/lotus.svg",
+      "description": "MenoBrief is a free, client-only menopause and perimenopause appointment preparation tool.",
+      "foundingDate": "2026",
+      "sameAs": [
+        "https://github.com/virendrahardikrviru-commits/menobrief"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://menobrief.pages.dev/privacy#webpage",
+      "name": "Privacy & Safety – MenoBrief",
+      "url": "https://menobrief.pages.dev/privacy",
+      "description": "Privacy and safety information for MenoBrief, a menopause clinical briefing tool.",
+      "isPartOf": { "@id": "https://menobrief.pages.dev/#organization" },
+      "author": { "@id": "https://menobrief.pages.dev/#organization" },
+      "publisher": { "@id": "https://menobrief.pages.dev/#organization" },
+      "datePublished": "2026-11-01",
+      "dateModified": "2026-11-07",
+      "inLanguage": "en-GB"
+    }
+    </script>
+
 </head>
 
 <body>
@@ -154,33 +188,86 @@
                         </p>
                     </div>
 
-                    <!-- SECTION 5: AI AND ANALYTICS -->
+                    <!-- SECTION 5: PATIENT INPUTS PROCESSED LOCALLY -->
                     <div class="review-section">
-                        <h3>5. AI and Analytics</h3>
+                        <h3>5. Patient Inputs Processed Locally</h3>
                         <p>
-                            MenoBrief currently has no active AI integration or analytics integration.
-                            Your briefing information is organised using the application's existing local
-                            logic.
+                            The information you enter into MenoBrief — your symptoms, menstrual history,
+                            medication details and free-text narrative — is processed locally in your
+                            browser. It is held in browser memory only while you use the page and is
+                            not sent to a MenoBrief backend, database, AI service or third party.
+                            Refreshing or closing the page clears your entries.
                         </p>
                     </div>
 
-                    <!-- SECTION 6: IMPORTANT PRIVACY LIMITATIONS -->
+                    <!-- SECTION 6: LOCAL PDF GENERATION -->
                     <div class="review-section">
-                        <h3>6. Important Privacy Limitations</h3>
+                        <h3>6. Local PDF Generation</h3>
                         <p>
-                            Local browser processing does not guarantee complete security. Information may
-                            still be exposed through a compromised device, malicious scripts, browser
-                            extensions, or other software running in your browser. Protect your device and
-                            any downloaded PDFs, particularly when they contain sensitive health information.
+                            Your clinical briefing PDF is generated locally on your device using a
+                            locally hosted copy of the jsPDF library. The PDF is created in your
+                            browser and downloaded through your browser's normal download process.
+                            The downloaded PDF remains on your device unless you choose to share or
+                            move it. MenoBrief does not retain a copy.
                         </p>
                     </div>
 
-                    <!-- SECTION 7: YOUR RESPONSIBILITY -->
+                    <!-- SECTION 7: PUBLIC WEBSITE SHARING -->
                     <div class="review-section">
-                        <h3>7. Your Responsibility</h3>
+                        <h3>7. Public Website Sharing</h3>
                         <p>
-                            Enter only information you are comfortable processing on your device. Keep your
-                            browser and device secure, and store downloaded PDFs carefully.
+                            The "Share MenoBrief" buttons promote the public MenoBrief website only.
+                            They share the public page link and a short description of the tool. They
+                            never access your patient inputs, questionnaire responses or generated
+                            PDF, and they never send patient information anywhere. Sharing opens in
+                            your chosen app (for example, email or a messaging app) subject to that
+                            app's own terms.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 8: ORDINARY TECHNICAL INFORMATION -->
+                    <div class="review-section">
+                        <h3>8. Ordinary Technical Information</h3>
+                        <p>
+                            Like most websites, the MenoBrief site is served by website hosting
+                            infrastructure that processes ordinary technical information such as
+                            your IP address, browser type and page requests as part of delivering
+                            the page. MenoBrief does not control this hosting infrastructure and
+                            does not specify or guarantee any particular log-retention period. This
+                            technical information is not linked to your patient inputs, which are
+                            never transmitted to MenoBrief.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 9: AI AND ANALYTICS -->
+                    <div class="review-section">
+                        <h3>9. AI and Analytics</h3>
+                        <p>
+                            MenoBrief has no active AI integration and no analytics or tracking.
+                            Your briefing information is organised using the application's own
+                            local logic. No patient data is sent to any AI service.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 10: IMPORTANT PRIVACY LIMITATIONS -->
+                    <div class="review-section">
+                        <h3>10. Important Privacy Limitations</h3>
+                        <p>
+                            Local browser processing does not guarantee complete security or
+                            anonymity. Information held in browser memory can be inspected through
+                            browser developer tools, and any script running on the page can access
+                            in-memory state. Protect your device and any downloaded PDFs,
+                            particularly when they contain sensitive health information.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 11: YOUR RESPONSIBILITY -->
+                    <div class="review-section">
+                        <h3>11. Your Responsibility</h3>
+                        <p>
+                            Enter only information you are comfortable processing on your device.
+                            Keep your browser and device secure, refresh or close the page when
+                            finished, and store downloaded PDFs carefully.
                         </p>
                     </div>
 
